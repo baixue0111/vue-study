@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<script src="script/vue.js"></script>
+	<script src="script/v-router.js"></script>
+	<style>
+		[v-cloak] {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="test">
+		<p><span>msg的值是:</span><span v-once v-html="msgHtml" v-bind:id="id"></span></p>
+		<span>{{reversedMessage}}</span>
+		<input type="text" v-model="msg">
+		<p>{{now}}</p>
+		<div class="staic" v-bind:class="classObject">对象绑定class</div>
+		<div class="staic" v-bind:class="[arrActive,arrError]">数组绑定class</div>
+		<h3 v-bind:style="{color : activeColor , fontSize : fontSize +'px'}">样式绑定</h3>
+		<h3 v-bind:style="styleObejct">对象形式绑定style</h3>
+		<button v-on:click.once="clickMe('你好')">点击me</button>
+		<p v-cloak>{{cloakMsg}}</p>
+		<p v-once>{{cloakMsg}}</p>
+		<div><input type="text" v-model="cloakMsg"></div>
+		<new-components></new-components>
+		<myComponent1></myComponent1>
+	</div>
+</body>
+<script>
+	//console.log(window)
+	var vue = new Vue({
+		el : "#test",
+		data : {
+			msg : "abcdefg",
+			msgHtml : "<span>msg html</span>",
+			cloakMsg: "在vue渲染完整个Dom,才显示 而且必须配合CSS使用",
+			id : "nameId",
+			isActive : true,
+			hasError : true,
+			arrActive : 'active',
+			arrError : 'Error',
+			activeColor : 'red',
+			fontSize : 20,
+			clickName : "小白",
+			classObject : {
+				className : true,
+				className2 : true
+			},
+			styleObejct : {
+				color : 'blue',
+				fontSize : 12
+			}
+		},
+		computed : {
+			reversedMessage : function () {
+				return this.msg.split('').reverse().join('');
+			},
+			now : function () {
+				return Date.now();
+			}
+		},
+		methods : {
+			clickMe : function (val) {
+				console.log(val + this.clickName + '!');
+			}
+		},
+		components: {
+			"new-components": {
+				template: "<div>我是new-components组件</div>"
+			}
+		}
+	})
+
+	//创建构造器
+	var myComponent = Vue.extend({
+		template:"<h2>this is my first component</h2>"
+	});
+	var myComponent2 = Vue.extend({
+		template:"<h2>嵌套组件:<myComponent1></myComponent1></h2>",
+		components:{
+			"myComponent1":myComponent
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.directive</title>
+	<script src="script/vue.js"></script>
+	<script src="script/v-router.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div id="dom" v-mydirective="color">{{num}}</div>
+		<div>
+			<button @click="addCount">add</button>
+		</div>
+	</div>
+	<div>
+		<button onclick="unclick()">解绑</button>
+	</div>
+</body>
+<script>
+	/* Vue.directive('mydirective', function (el, binding, Vnode) {
+		el.style='color:' + binding.value;
+		//console.log(el);
+		//console.log(binding.value);
+		//console.log(Vnode);
+	}); */
+	Vue.directive('mydirective', {
+		bind: function (el, binding) {  // 绑定
+			console.log("bing");
+			el.style = 'color:' + binding.value;
+			console.log(el)
+		},
+		inserted: function () { // 绑定到节点
+			console.log("inserted");
+		},
+		update: function () { // 组件更新
+			console.log("update");
+		},
+		componentUpdated: function () { //组件更新完成
+			console.log("componentUpdated");
+		},
+		unbind: function () { // 解绑
+			console.log("unbind");
+		}
+	});
+
+	// 解绑
+	function unclick () {
+		app.$destroy();  // 销毁一个实例，接触它的全部指令及事件监听器
+	};
+
+	var app = new Vue({
+		el: "#app",
+		data: {
+			num: 10,
+			color: 'red'
+		},
+		methods: {
+			addCount: function () {
+				this.num ++;	
+			}
+		}
+	})
+	console.log(app)
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-component全局化注册组件</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>全局化注册组件</h2>
+    <hr>
+    <div id="app">
+        <my-component></my-component>    
+    </div>
+</body>
+<script>
+    // 初始化根实例之前注册组件
+    Vue.component('my-component', {
+        template: '<div>我是自定义组件</div>'
+    });
+
+    new Vue({
+        el: "#app",
+    })
+</script>
+</html>

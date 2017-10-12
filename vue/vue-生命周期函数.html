@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-生命周期函数</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <div>
+        <h2>构造器的声明周期</h2>
+        <div id="app">
+            {{message}}
+            <p><button v-on:click="add">加分</button></p>
+        </div>
+        <p><button onclick="app.$destroy()">销毁</button></p>
+       
+    </div>
+    <!-- 写在 <template> 标签里的模板 -->
+    <template id="tem">
+        <h3>我是template模板</h3>
+    </template>  
+</body>
+
+<!-- 写在<script>里的标签 -->
+<script type="x-template" id="tem2">
+    <p>我是tem2</p>
+</script>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 1
+        },
+        methods: {
+           add: function () {
+               this.message ++;
+           } 
+        },
+        beforeCreate: function () {
+            console.log("1 - beoforeCreate 创建之前");
+        },
+        created: function () {
+            console.log("2 - created 实例创建完成");
+        },
+        beforeMount: function () {
+            console.log("3 - beforeMount 挂载之前");
+        },
+        mounted: function () {
+            console.log("4 - mounted el被创建并挂载到实例");
+        },
+        beforeUpdate: function () {
+            console.log("5 - beforeUpdate 数据更新之前");
+        },
+        updated: function () {
+            console.log("6 - updated 数据更新之后");
+        },
+        activated: function () {
+            console.log("7 - activated keep-alive组件激活是调用");
+        },
+        deactivated: function () {
+            console.log("8 - deactivated keep-alive组件停用时调用");
+        },
+        beforeDestroy: function () {
+            console.log("9 - beforeDestroy 销毁之前");
+        },
+        destroyed: function () {
+            console.log("10 - destroyed 销毁之后");
+        }
+        //template: "#tem2"
+        //template: "#tem"
+        //template: `<p>我是template</p>`
+    })
+</script>
+</html>

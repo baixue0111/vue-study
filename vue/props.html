@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Props</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>props 设置属性</h2>
+    <hr>
+    <div id="app">
+        <!-- <my-components b-message="hello"></my-components> -->
+        <my-components v-bind:b-message="symbol"></my-components>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            symbol : "Hai"
+        },
+        components: {
+            "my-components": {
+                template: '<div>{{bMessage}} 小白 </div>',   // 处理 “ - ” 利用驼峰的形式书写
+                props: ["bMessage"]   // 子组件不能直接引用父组件的数据，父组件的数据需要通过"props"才能下发到子组件中
+            }
+        }
+    })
+</script>
+</html>

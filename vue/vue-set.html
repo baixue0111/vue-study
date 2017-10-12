@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-set</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>vue-set 引用构造器外部数据</h2>
+    <div id="app">
+        <p>{{name}} : {{count}}</p>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+        <button onclick="add()">外部添加</button>
+    </div>
+</body>
+<script>
+    // 在构造器外部声明数据
+    var outData = {
+        count: 1,
+        name: "baixue",
+        arr: ["aaa", "bbb" , "ccc"]
+    };
+
+    var app = new Vue ({
+        el: "#app",
+        data: outData
+    })
+
+    // 用Vue.set改变
+    function add () {
+        //app.arr[1] = "ddd";  // 这样设置时页面不会自动更新，这时就得用Vue.set
+        Vue.set(app.arr, 1, "ddd");
+        //Vue.set(outData, 'count', 4);
+    }
+
+   // app.count++;  // 用Vue对象的方法添加
+     outData.count++;   // 直接操作外部数据
+</script>
+</html>

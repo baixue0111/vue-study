@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component Vue内置组件</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>component Vue内置组件</h2>
+    <hr>
+    <div id="app">
+        <!-- component标签渲染哪个组件是由is的值来决定的 -->
+        <component v-bind:is="who"></component>
+        <button v-on:click="changeComponent">切换组件</button>
+    </div>
+</body>
+<script>
+    var componentA = {
+        template: '<div>我是componentA</div>'
+    };
+
+    var componentB = {
+        template: '<div>我是componentB</div>'
+    };
+
+    var componentC = {
+        template: '<div>我是componentC</div>'
+    };
+
+    new Vue({
+        el: "#app",
+        data: {
+            who: "componentA"
+        },
+        components: {
+            "componentA": componentA,
+            "componentB": componentB,
+            "componentC": componentC
+        },
+        methods: {
+            changeComponent: function () {
+                if(this.who == "componentA") {
+                    this.who = "componentB";
+                } else if(this.who == "componentB") {
+                    this.who = "componentC";
+                } else if(this.who == "componentC") {
+                    this.who = "componentA";
+                }
+            }
+        }
+    })
+</script>
+</html>

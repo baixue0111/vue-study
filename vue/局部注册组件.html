@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>局部注册组件</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>局部注册组件</h2>
+    <hr>
+    <div id="app">
+        <new-element></new-element>
+    </div>
+
+    
+    <!-- <ul id="app">
+        <li is="new-element"></li>  
+    </ul> -->
+</body>
+<script>
+    // Vue.component("new-element", {
+    //     template: '<p style="coloe: green">我是自定义组件</p>'
+    // });
+    new Vue({
+        el: "#app",
+        components: {
+            "new-element": {
+                template: '<p style="color: red">我是局部注册的组件</p>'
+            }
+        }
+    })
+</script>
+</html>
