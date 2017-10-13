@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on 绑定事件监听</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h3>v-on 绑定事件监听</h3>
+    <hr>
+    <div id="app">
+        <p v-text="count"></p>
+        <p><input type="text" v-model="msg" v-on:keyup.enter="onenter"></p>
+        <p>input输入框内的值： {{msg}}</p>
+        <button v-on:click="add">增加</button>
+        <button v-on:click="jian">减少</button>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+           count: 10,
+           msg: "请输入您的姓名",
+           sendMsg: 20
+        },
+        methods: {
+            add: function () {
+                this.count ++;
+            },
+            jian: function () {
+                this.count --;
+            },
+            onenter: function () {
+                this.count = this.count + parseInt(this.sendMsg);
+            }
+        }
+    })
+</script>
+</html>
