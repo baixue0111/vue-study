@@ -47,6 +47,9 @@
         <p>{{num}}</p>
         <button v-on:click="add">增加数量</button>
         <button v-on:click="addFun">extends 扩展add方法</button>
+        <h3>delimiters 修改插入分隔符</h3>
+        <hr>
+        <div>${name}</div>
     </div>
 </body>
 <script>
@@ -125,7 +128,7 @@
             }
         } */
     })
-
+console.log(watchApp)
     // 用实例属性写watch 监控
     watchApp.$watch('temperature', function (newVal, oldVal) {
         if(newVal >= 26) {
@@ -159,7 +162,8 @@
     new Vue({
         el: "#mixins",
         data: {
-            num: 1
+            num: 1,
+            name: "白了个白"
         },
         methods: {
             add: function () {
@@ -167,7 +171,8 @@
             }
         },
         mixins: [addLog],  // 混入
-        extends: extend
+        extends: extend,
+        delimiters: ["${","}"]
     })
 
 </script>
