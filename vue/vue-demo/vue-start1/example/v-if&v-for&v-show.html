@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if & v-for & v-show 指令实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2>v-if 判断是否加载</h2>
+    <hr>
+    <div id="app">
+        <div v-if="isLogin"> 你好，小白</div>
+        <div v-else>请登录后在操作</div>
+    </div>
+
+    <h2>v-show 是否显示</h2>
+    <hr>
+    <div id="showApp">
+        <div v-show="showMsg" style="color: green">v-show="true" 值为true时显示内容</div>
+    </div>
+
+    <h2>v-for 解决模板循环问题</h2>
+    <hr>
+    <div id="forApp">
+        <ul>
+            <li v-for="(item, index) in nameList">index为：{{index}} 对应值为：{{item}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="items in sortItem">年龄：{{items}} 岁</li>
+        </ul>
+    </div>
+
+    <h3>v-for 循环对象</h3>
+    <div id="forObj">
+        <ul>
+            <li v-for="item in computedAge">{{item.name}}:{{item.age}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            isLogin: false
+        }
+    });
+
+    new Vue({
+        el: "#showApp",
+        data: {
+            showMsg: true
+        }
+    });
+
+    new Vue({
+        el: "#forApp",
+        data: {
+            nameList: ["this is xiaobai", "this is zhangpengpeng", "this is baixuexue"],
+            ageList: [20, 10, 18, 16, 12, 17, 13, 15, 14, 11]
+        },
+        computed: {
+            sortItem: function () {
+                return this.ageList.sort();
+            }
+        }
+    })
+
+    new Vue({
+        el: "#forObj",
+        data: {
+            forObjList: [
+                {
+                    name: "阿白",
+                    age: 18
+                },
+                {
+                    name: "张朋朋",
+                    age: 20
+                },
+                {
+                    name: "小狗狗",
+                    age: 13
+                }
+            ]
+        },
+        computed: {
+            computedAge: function () {
+                return sortByKey(this.forObjList, "age");
+            }
+        }
+    })
+    // 数组对象方法排序
+    function sortByKey(array,key){
+        return array.sort(function(a,b){
+            var x=a[key];
+            var y=b[key];
+            return ((x<y)?-1:((x>y)?1:0));
+        });
+    }
+</script>
+</html>

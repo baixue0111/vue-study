@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实例属性和内置组件</title>
+    <script type="text/javascript" src="script/vue.js"></script>
+</head>
+<body>
+    <h2>内置组件 - slot</h2>
+    <hr>
+    <ul>
+        <li style="list-style: none;">1.传递值</li>
+        <li style="list-style: none;">2.用"slot"标签接收传递的值</li>
+    </ul>
+    <div id="app">
+        <jsbai>
+            <span slot="name">{{jsbai.name}}</span>   <!--其中solt属性值代表 key 值-->
+            <span slot="url">{{jsbai.url}}</span>
+            <span slot="skill">{{jsbai.skill}}</span>
+        </jsbai>
+    </div>
+    <template id="tep">
+        <div>
+            <p>名字：<slot name="name"></slot></p>   <!--此处的name属性值就是对应上面slot属性的值-->
+            <p>地址：<slot name="url"></slot></p>
+            <p>技术类型：<slot name="skill"></slot></p>
+        </div>
+    </template>
+    <button onclick="counttj()">统计</button>
+</body>
+<script>
+    function counttj() {
+        var doc = document.getElementById("app");
+        var objectData = [
+            {
+                name: "baixue",
+                url: "http://baidu.com",
+                skill: "web前端"
+            },
+            {
+                name: "xiaobai",
+                url: "http://baixue.com",
+                skill: "web前端工程师"
+            }
+        ]
+        console.count("执行次数");   // console.count() 统计代码执行的次数
+        console.dir(doc);   // console.dir() 可以显示一个对象的所有属性和方法
+        console.table(objectData);  // 将objectData 数组对象以表格的形式打印出来
+    }
+    var tep = {
+        template: "#tep"
+    }
+    new Vue({
+        el: "#app",
+        data: {
+            jsbai: {
+                name: "baixue",
+                url: "http://baidu.com",
+                skill: "web前端"
+            }
+        },
+        components: {
+            "jsbai" : tep
+        }
+    })
+</script>
+</html>
