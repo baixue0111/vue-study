@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind 指令</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        .box{
+            color: red;
+            font-size: 16px;
+        }
+        #imgId{
+            height: 200px;
+        }
+        .active{
+            font-size: 20px;
+            color: #CB1623;
+            opacity: .7;
+            text-align: center;
+        }
+        .box2{
+            box-shadow: 0px 0px 5px #000;
+        }
+    </style>
+</head>
+<body>
+    <h3>1.v-bind 指令</h3>
+    <hr>
+    <div id="app">
+        <div>
+            <img id="imgId" v-bind:src="imgUrl">  <!--  v-bind 也可以的缩写为":src" -->
+        </div>
+        <h3>2.直接绑定class, 并判断</h3>
+        <hr>
+        <div v-bind:class="{box: isTrue}">v-bind 设置的class</div>
+        <h3>3.绑定class数组</h3>
+        <hr>
+        <div class="static" 
+             v-bind:class="[activeClass, box2Class]">
+            绑定class数组
+        </div>
+        <h3>4.绑定class中使用三元表达式判断</h3>
+        <hr>
+        <div v-bind:class="isOK ? boxDiv : activeClass">绑定class中使用三元表达式判断</div>
+        <h3>5、绑定style</h3>
+        <hr>
+        <div v-bind:style="{color: red, fontSize: font}">绑定style</div>
+        <h3>6、用对象绑定style样式</h3>
+        <hr>
+        <div v-bind:style="styleObject">用对象绑定style样式</div>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data: {
+            imgUrl: "http://mpic.tiankong.com/ab4/991/ab499146bee2b92e00baad2a6883fba4/640.jpg",
+            isTrue: true,
+            boxDiv: "box",
+            classObject: {
+                "box": false,
+                "boxClass": true
+            },
+            activeClass: "active",
+            box2Class: "box2" ,
+            isOK: false,
+            red: "#CB1623",
+            font: "20px",
+            styleObject: {
+                fontSize: "18px",
+                color: "green",
+                boxShadow: "2px 2px 5px #000",
+                textAlign: "center"
+            }
+        },
+        methods: {
+           
+        }
+    })
+</script>
+</html>
