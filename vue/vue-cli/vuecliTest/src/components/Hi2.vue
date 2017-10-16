@@ -1,6 +1,7 @@
 <template>
   <div id="hi2">
       <h1>{{showMsg}}</h1>
+      <p>{{$route.nameId}}</p>
   </div>
 </template>
 <script>

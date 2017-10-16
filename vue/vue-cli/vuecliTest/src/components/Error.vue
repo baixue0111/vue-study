@@ -1,16 +1,14 @@
 <template>
   <div id="Hi">
       <h1>{{message}}</h1>
-      <p>newsId:{{$route.params.newsId}}</p>
-      <p>newsTitle:{{$route.params.newsTitle}}</p>
+      <p>此页面不存在！</p>
   </div>
 </template>
 <script>
     export default {
-        name: "Hi",
         data () {
            return {
-               message: " this is hi页面"
+               message: " Error: 404"
            }
         }
     }
