@@ -5,6 +5,7 @@ import Hi from '@/components/Hi.vue'
 import Hi1 from '@/components/Hi1.vue'
 import Hi2 from '@/components/Hi2.vue'
 import Error from '@/components/Error.vue'
+import count from '@/components/count.vue'
 
 Vue.use(Router)  // Vue全局使用Router 
 
@@ -37,12 +38,7 @@ export default new Router({
     },
     {
       path: '/hi/:newsId(\\d+)/:newsTitle',
-      component: Hi,
-      beforeEnter: (to, from, next) => {  // 路由配置文件中的钩子函数
-        console.log(to);
-        console.log(from);
-        next();
-      }
+      component: Hi
     },
     {
       path: '/hi1',
@@ -56,6 +52,10 @@ export default new Router({
     {
       path: "*",
       component: Error
+    },
+    {
+      path: '/count',
+      component: count
     }
   ]
 })
