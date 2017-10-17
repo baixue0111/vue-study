@@ -7,6 +7,7 @@
       <router-link to='/hi/222/新闻标题'>Hi页</router-link>
       <router-link to='/hi1'>Hi1页</router-link>
       <router-link to='/hi2-baixue'>Hi2页</router-link>
+      <router-link to='/count'>count页</router-link>
      <!--  <router-link v-bind:to="{name:'Hi1', params: {username: 'baixue'}}">Hi页面</router-link>|
       <router-link to="/hi/hi1">Hi页面1</router-link>|
       <router-link to="/hi/hi2">Hi页面2</router-link> -->
