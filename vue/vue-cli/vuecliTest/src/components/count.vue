@@ -5,6 +5,10 @@
         <h3>{{count}}</h3>
         <p><button @click="add(10)">增加 + 10</button></p>
         <p><button @click="reduce">减少 - 1</button></p>
+        <div>
+            <p><button @click="addAction">action增加</button></p>
+            <p><button @click="reduceAction">action减少</button></p>
+        </div>
     </div>   
 </template>
 <script type="text/javascript">
@@ -13,7 +17,7 @@
 // 2. 用Vuex中的 mapState 对象来赋值
 // 3. 用Vuex中的 mapState 数组进行赋值
     import store from '../vuex/store.js';
-    import { mapState, mapMutations, mapGetters } from 'Vuex';
+    import { mapState, mapMutations, mapGetters, mapActions } from 'Vuex';
     export default {
         data () {
             return {
@@ -32,7 +36,10 @@
             ...mapState(['count']),   // ES6的扩展运算符 "..." 
             ...mapGetters(['count'])
         },
-        methods:mapMutations(['add', 'reduce']),  // 将$store.commit('add', 10) 改为正常的绑定方法的写法
+        methods: {
+            ...mapMutations(['add', 'reduce']),  // 将$store.commit('add', 10) 改为正常的绑定方法的写法
+            ...mapActions(['addAction', 'reduceAction'])
+        },
         store,   // 把store 的实例注入到组件中
     }
 
