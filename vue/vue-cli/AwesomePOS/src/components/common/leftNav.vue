@@ -47,7 +47,7 @@
     width: 5%;
 }
 .iconfont{
-    font-size: 24px;
+    font-size: 18px;
 }
 #leftNav ul{
     padding: 0px;
