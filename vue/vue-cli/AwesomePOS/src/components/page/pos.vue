@@ -97,6 +97,7 @@
                         </el-tab-pane>
                     </el-tabs>
                 </div>
+                <div v-loading.fullscreen.lock="fullscreenLoading"></div>
             </el-col>
         </el-row>
     </div>   
@@ -114,10 +115,12 @@ export default {
       type2Goods: [],
       type3Goods: [],
       totalMoney: 0,
-      totalCount: 0
+      totalCount: 0,
+      fullscreenLoading: false
     };
   },
   created: function() {
+      this.fullscreenLoading = true;
     // 请求商品数据
     axios
       .get("http://jspang.com/DemoApi/oftenGoods.php")
@@ -150,6 +153,7 @@ export default {
       });
   },
   mounted: function() {
+    this.fullscreenLoading = false; 
     // 所有DOM加载完成之后执行的钩子函数
     var orderHeight = document.body.clientHeight;
     // console.log(orderHeight);
