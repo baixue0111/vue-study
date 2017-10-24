@@ -9,7 +9,7 @@
                             <el-table-column prop="count" label="数量" width="70"></el-table-column>
                             <el-table-column prop="price" label="金额" width="70"></el-table-column>
                             <el-table-column label="操作" width="100" fixed="right">
-                                <template scope="scope">    <!--按钮必须放到template标签中，并设置属性 scope="scope" -->
+                                <template slot-scope="scope">    <!--按钮必须放到template标签中，并设置属性scope="scope"-->
                                     <el-button type="text" size="small" @click="delSingleGoods(scope.row)">删除</el-button>
                                     <el-button type="text" size="small" @click="addOrderList(scope.row)">增加</el-button>  <!-- scoped是模板作用域，scope.row 相当于把这一行的goods数据传给addOrderList方法 -->
                                 </template>
@@ -97,9 +97,9 @@
                         </el-tab-pane>
                     </el-tabs>
                 </div>
-                <div v-loading.fullscreen.lock="fullscreenLoading"></div>
             </el-col>
         </el-row>
+        <div v-show="fullscreenLoading" v-loading.fullscreen.lock="fullscreenLoading"></div>
     </div>   
 </template>
 <script>
@@ -119,39 +119,41 @@ export default {
       fullscreenLoading: false
     };
   },
+  beforeCreated: function () {
+      
+  },
   created: function() {
       this.fullscreenLoading = true;
     // 请求商品数据
-    axios
-      .get("http://jspang.com/DemoApi/oftenGoods.php")
-      .then(reponse => {
-        // 使用箭头函数之后， this就指向了外层的this， 跟作用域就没有关系了
-        //  console.log(reponse);
-        // console.log(this);
-        this.oftenGoods = reponse.data;
-      })
-      .catch(error => {
-        // console.log(error);
-        alert("网络错误，不能访问");
-      });
+    axios.get("http://jspang.com/DemoApi/oftenGoods.php")
+    .then(reponse => {
+    // 使用箭头函数之后， this就指向了外层的this， 跟作用域就没有关系了
+    //  console.log(reponse);
+    // console.log(this);
+    this.oftenGoods = reponse.data;
+    })
+    .catch(error => {
+    // console.log(error);
+    alert("网络错误，不能访问");
+    });
 
     // 拉取分类商品数据
-    axios
-      .get("http://jspang.com/DemoApi/typeGoods.php")
-      .then(reponse => {
-        // 使用箭头函数之后， this就指向了外层的this， 跟作用域就没有关系了
+    
+    axios.get("http://jspang.com/DemoApi/typeGoods.php")
+    .then(reponse => {
+    // 使用箭头函数之后， this就指向了外层的this， 跟作用域就没有关系了
         console.log(reponse);
         // console.log(this);
         this.type0Goods = reponse.data[0];
         this.type1Goods = reponse.data[1];
         this.type2Goods = reponse.data[2];
         this.type3Goods = reponse.data[3];
-      })
-      .catch(error => {
+        })
+        .catch(error => {
         // console.log(error);
         alert("网络错误，不能访问");
-      });
-  },
+        });
+    },
   mounted: function() {
     this.fullscreenLoading = false; 
     // 所有DOM加载完成之后执行的钩子函数

@@ -1,6 +1,15 @@
-http://es6.ruanyifeng.com/   ---->  ES6
+﻿http://es6.ruanyifeng.com/   ---->  ES6
 
 http://www.bslxx.com/   -----> 奔三路（面试题）
 
 
 http://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2   -----> iconfont图标库
+
+
+https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_4  ---> 微信支付开发文档
+
+网易云插件
+<div class="Music">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33035611&auto=1&height=66"></iframe>
+</div>
+
