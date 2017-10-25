@@ -491,28 +491,143 @@ console.log(map);  */ // Map(0) {}
 /********************************** Proxy 预处理 ******************************/
 // proxy 增强对象和函数（方法） 生命周期 也就是钩子函数, proxy 在真正执行之前执行
 // proxy 是在let obj 之前执行
-let obj = {
-    add: (val) => {return val},
-    name: 'jsbai'
-};
-console.log(obj.name); // jsbai
-console.log(obj.add(100));  // 100
+// let obj = {
+//     add: (val) => {return val},
+//     name: 'jsbai'
+// };
+// // console.log(obj.name); // jsbai
+// // console.log(obj.add(100));  // 100
 
-// proxy 的使用
-let proxy = new Proxy({
-    // 第一个对象写对象体
-    add: (val) => {return val},
-    name: 'jsbai'
-}, {
-    // 第二个对象写预处理（也就是会在对象体执行之前执行的内容）
-    // 预处理机制有： get  set  apply
-    // get 就是在得到一个东西之后执行
-    get: function(target, key, property) {  // 前两个参数必须传，property 这个参数可以没有
-        //console.log(target);  // Object {name: "jsbai", add: function}
-        //console.log(key);  // name
-        //console.log(property);   // Proxy {name: "jsbai", add: function}
-        console.log('我先执行');
-        return target[key];
-    }
-});
-console.log(proxy.name);  //  先打印出 “我先执行”  然后打印出 jsbai
+// // proxy 的使用
+// let proxy = new Proxy({
+//     // 第一个对象写对象体
+//     add: (val) => {return val},
+//     name: 'jsbai'
+// }, {
+//     // 第二个对象写预处理（也就是会在对象体执行之前执行的内容）
+//     // 预处理机制有： get  set  apply
+//     // get 就是在得到一个东西之后执行
+//     get: function(target, key, property) {  // 前两个参数必须传，property 这个参数可以没有
+//         //console.log(target);  // Object {name: "jsbai", add: function}
+//         //console.log(key);  // name
+//         //console.log(property);   // Proxy {name: "jsbai", add: function}
+//         console.log('我先执行');
+//         return target[key];
+//     },
+//     set: function (target, key, val, receiver) {  // val 表示要改变的值   receiver 是原始值
+//         console.log(`setting ${key} = ${val}`);  //  setting name = web前端 
+//         return target[key] = val;  // 预处理之后要进行返回  否则是改变不了name的值
+//     }
+// });
+// console.log(proxy.name);  //  先打印出 “我先执行”  然后打印出 jsbai
+// proxy.name = 'web前端';
+// console.log(proxy.name);  // web前端
+
+// apply 的使用
+// 实际开发中怎么写呢？如下：
+// let target = function () {
+//     add: (a) => {
+//         a++;
+//     }
+//     return 'this is baibai';
+// };
+// let handler = {
+//     apply(target, ctx, args) {  // apply 对方法的预处理  直接是个方法
+//         //console.log(target);  // 就是target方法
+//         //console.log(ctx);
+//        // console.log(args);
+//         console.log('do apply');
+//         return Reflect.apply(...arguments);
+//     }
+// };
+
+// let pro = new Proxy (target, handler);  // 相当于把方法单独在外面封装起来 handler意思就是 钩子（预处理）
+
+// console.log(pro());  // 先打印：do apply  然后打印： this is baibai
+
+
+/********************************** promise对象 ***********************************/
+// let state = 1;
+// function step1(resolve, reject) {
+//     //console.log("开始洗菜做饭");
+//     if(state == 1) {
+//         resolve('洗菜做饭-完成');
+//     } else {
+//         reject("洗菜做饭-出错");
+//     }
+// }
+
+// function step2(resolve, reject) {
+//    // console.log("坐下来吃饭");
+//     if(state == 1) {
+//         resolve("坐下来吃饭-完成");
+//     } else {
+//         reject("坐下来吃饭-失败");
+//     }
+// }
+
+// function step3(resolve, reject) {
+//     //console.log("收拾桌子洗碗");
+//     if(state == 1) {
+//         resolve("收拾桌子洗碗-完成");
+//     } else {
+//         reject("收拾桌子洗碗-失败");
+//     }
+// }
+
+// new Promise(step1).then(function (val) {
+//     //console.log(val);
+//     return new Promise(step2);
+// }).then(function (val) {
+//     //console.log(val);
+//     return new Promise(step3);
+// }).then(function (val) {
+//    // console.log(val);
+// })
+
+
+
+/*********************************** Class 类 *********************************/
+
+// class Coder {
+//     name(val) {   // 函数的参数val
+//         console.log(val);
+//         return val;    // 必须用return 返回值下方才可使用
+//     }
+
+//     skill(val) {   // 多方法声明时，不用逗号间隔 直接写
+//         // this 指向Coder
+//         console.log(this.name("小白的技能：") + ':' + val);  // 小白的技能：:web前端
+//     }
+
+//     constructor(a, b) {   // 类的参数
+//         this.a = a;
+//         this.b = b;
+//     }
+
+//     add() {
+//         return this.a + this.b;
+//     }
+// }
+
+//let jsbai = new Coder;
+//jsbai.name('哈哈哈啊哈哈哈哈');
+//jsbai.skill('web前端');
+
+// let jsbai = new Coder(2, 2);  // 类的参数
+// console.log(jsbai.add());
+
+// 类的继承
+// class htmler extends Coder {   // 继承Coder 所有的方法
+
+// }
+
+// let baibai = new htmler;
+// baibai.name(100);   // 100
+
+
+/************************************ 模块化操作 ***********************************/
+// export（输出）  import（引入）
+
+// import name from './temp';
+// console.log(name);
