@@ -13,3 +13,9 @@ https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_4  ---> 微信支付�
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33035611&auto=1&height=66"></iframe>
 </div>
 
+
+
+面试题：
+// js基础
+1.js中什么类型是引用传递，什么类型是值传递？ 如何将值传递
+
