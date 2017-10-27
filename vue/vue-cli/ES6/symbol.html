@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Symbol</title>
+</head>
+<body>
+    <h3>Symbol 练习</h3>
+    <hr>
+</body>
+<script>
+    // 1. Symbol类型在声明时，不能使用new，会报错(Symbol is not a constructor at new Symbol (<anonymous>))
+    // 2. 说明symbol类型不是一个对象, 也就是说symbol不能对其进行添加属性，类似于字符串的数据类型
+    let s = Symbol();
+    let sym = Symbol('sym');  // 声明时可以添加参数，为了区分于别的（这里的参数相当于对其描述）
+    //console.log(typeof s);  // symbol
+    //console.log(s.toString());
+    //console.log(sym.toString());
+
+    // 3. symbol类型在声明时可以传参数，当传入的参数是对象时：
+    const obj = {
+        add() {
+            return 'Hello xiaobai!'
+        }
+    };
+    let symbol = Symbol(obj);
+    // console.log(symbol); // Symbol([object Object])  被转换成字符串形式的symbol值
+    // console.log(typeof symbol); // symbol
+
+    // 4. Symbol 函数的参数只是表示对当前的Symbol值得描述，因此相同参数的symbol函数的返回值是不相等的
+    // 无参数时
+    let s1 = Symbol();
+    let s2 = Symbol();
+   // console.log(s1 === s2);  // false
+    // 有参数时
+    let s3 = Symbol('foo');
+    let s4 = Symbol('foo');
+    //console.log(s3 === s4);  // false
+
+    // Symbol值不能与其他类型的值进行换算
+    //console.log('我要和s3拼接' + s3);   // 报错  Cannot convert a Symbol value to a string（不能将symbol值转换成字符串）
+    //console.log(`我要和s3拼接：${s3}`);  // Cannot convert a Symbol value to a string
+    
+    // 5. Symbol值可以以字符串的形式显示
+    let symb = Symbol();
+    //console.log(String(symb));   // Symbol()  显示的形式为字符串类型
+
+    // 6. 作为属性名的Symbol,每个symbol值都是不想等的，所以symbol可以作为标识符用于对象的属性名，这样就可以保证不出现同名的属性
+    // 适用于一个对象由多个模块构成的情况，例子：
+    let mysymbol = Symbol();
+    // 第一种写法
+    let obj2 = {};
+    obj[mysymbol] = '我是第一种写法！';
+    console.log(obj[mysymbol]);   // 我是第一种写法！
+    // 第二种写法
+    let obj3 = {
+        [mysymbol] : '我是第二种写法！'
+    }
+    console.log(obj3[mysymbol]);   // 我是第二种写法！
+    // 第三种写法
+    let obj4 = {};
+    Object.defineProperty(obj4, mysymbol, { value: '我是第三种写法！'});
+    console.log(obj4[mysymbol]);  // 我是第三种写法！
+
+    // 7. symbol值作为对象属性名时，不能用点运算。例：
+    let mys = Symbol ();
+    let myobj = {};
+    myobj.mys = "我是点运算属性名的值";
+    console.log(myobj[mys]);   // undefined
+    console.log(typeof myobj);   // object
+    console.log(myobj['mys']);  // 我是点运算属性名的值
+</script>
+</html>

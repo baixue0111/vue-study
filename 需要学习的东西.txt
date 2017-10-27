@@ -8,6 +8,11 @@ http://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2   -----> iconfo
 
 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_4  ---> 微信支付开发文档
 
+http://google.github.io/traceur-compiler/demo/repl.html#  -----> Traceur 在线将es6转换为es5
+
+http://gcdn.gcpowertools.com.cn/showtopic-36421-1-1.html/   ---->  总结一些JavaScript开发的著名开源项目 
+
+
 网易云插件
 <div class="Music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=33035611&auto=1&height=66"></iframe>
