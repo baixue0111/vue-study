@@ -25,6 +25,13 @@
         <li>-has(value): 返回一个布尔值，表示该值是否为Set成员</li>
         <li>-clear(): 清除所有成员没有返回值</li>
     </ol>
+    <h3>Set 遍历操作</h3>
+    <ol>
+        <li>-keys(): 返回键名的遍历器</li>
+        <li>-values(): 返回键值的遍历器</li>
+        <li>-entries(): 返回键值对的遍历器</li>
+        <li>-forEach(): 返回回掉函数遍历每个成员</li>
+    </ol>
 </body>
 <script>
     // set 是ES6提供新的数据结构，类似于数组，但是成员的值必须是唯一，不能有重复的值
@@ -79,5 +86,59 @@
     console.log(set5.has(1));  // true
     console.log(set5.delete('sda'));  // true
     console.log(set5);  // Set(4) {"add", 1, 3, 4}
+
+    // 9. 将Set结构转换为数组
+    let newSet = new Set([1, 2, 3, 4]);
+    console.log(newSet);  // Set(4) {1, 2, 3, 4}
+    let items = Array.from(newSet);
+    console.log(items);  // (4) [1, 2, 3, 4]
+
+    // 封装Set数组去重的方法
+    function dedupe(arr) {
+        let newArray = new Set(arr);  // 初始化set
+        return Array.from(newArray);  // 将set结构转换成数组
+    }
+    console.log(dedupe([1, 2, 2, 3, 4]));
+
+    // 10. Set遍历方法
+    let setfor = new Set(['set', 'set2', 'set3']);
+    //console.log(setfor.keys());
+    //console.log(setfor.values());
+    //console.log(setfor.entries());
+    for( let item of setfor.keys()) {
+        //console.log(item);  // set set2 set3 
+    }
+
+    for( let item of setfor.values()) {
+        //console.log(item);  // set set2 set3 
+    }
+
+    for( let item of setfor.entries()) {
+        //console.log(item);  //  返回同时包括键值和键名，它俩是相等的  ["set", "set"]   ["set2", "set2"]   ["set3", "set3"]
+    }
+    for (let item of setfor) {  // 可以省略values()方法直接循环
+        //console.log(item);   // set set2 set3 
+    }
+
+    // forEach
+    let setforEach = new Set(['forEach', 'forEach2', 'forEach3']);
+    setforEach.forEach((value, key) => console.log(key + ':' + value));  // set的键名和键值是同一个值，永远相等  forEach:forEach  forEach2:forEach2  forEach3:forEach3
+
+    // 扩展运算符也可以用于遍历，扩展运算符内部使用for...of循环，所有也可以用于set结构
+    let setkz = new Set(['setkz', 'setkz2', 'setkz3']);
+    let newsetkz = [...setkz];
+    console.log(newsetkz);  // (3) ["setkz", "setkz2", "setkz3"]
+
+    // set 和 扩展运算符结合也可以去除数组重复成员
+    let arrqc = new Set(['set', 'set', 2, 2, 3, 4]);
+    let qcset = [...new Set(arrqc)];
+    console.log(qcset);  //  ["set", 2, 3, 4]
+
+    // 数组的map 和 filter 方法也可以用于set 
+    let setmap = new Set([1, 2, 3, 4, 5]);
+    //setmap = new Set([...setmap].map( x => x * 2));
+    //console.log(setmap);  // {2, 4, 6, 8, 10}
+    let setfilter = new Set([...setmap].filter( x => (x % 2) == 0));
+    console.log(setfilter);  // {2, 4}
 </script>
 </html>
