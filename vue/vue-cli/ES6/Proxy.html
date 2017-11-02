@@ -87,5 +87,27 @@
     console.log(new fproxy(1, 2));  // Object {value: 2}
     console.log(fproxy.prototype === Object.prototype);  // true
     console.log(fproxy.foo === "Hello, foo");   // true
+
+    // get()
+    var person = {
+        name: '张三',
+        add: function () {
+            return 1;
+        }
+    };
+
+    var proxy2 = new Proxy(person, {
+        get: function (target, property) {
+            console.log(property);   // name
+            if ( property in target) {
+                return target[property];
+            } else {
+                throw new ReferenceError("Property \"" + property + "\" does not exist. ");
+            }
+        }
+    });
+
+    console.log(proxy2.name);  // 张三
+    //console.log(proxy2.age);  // 会抛出个错误
 </script>
 </html>
