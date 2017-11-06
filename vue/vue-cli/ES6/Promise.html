@@ -143,5 +143,15 @@
  */
     // promise.prototype.then()
     
+    // promise.prototype.catch()
+    var promise5 = new Promise(function (resolve, reject) {
+        throw new Error('promise5 test');
+    });
+    promise.catch(function (error) {
+        console.log(error);
+    });
+
+
+
 </script>
 </html>
