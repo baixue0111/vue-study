@@ -12,6 +12,9 @@ http://google.github.io/traceur-compiler/demo/repl.html#  -----> Traceur 在线�
 
 http://gcdn.gcpowertools.com.cn/showtopic-36421-1-1.html/   ---->  总结一些JavaScript开发的著名开源项目 
 
+http://book.wengwang.me/read_1/436074  ---> javascript设计模式与开发实践
+
+http://blog.csdn.net/u014607184/article/details/52027879   ---> jsonp 跨域
 
 网易云插件
 <div class="Music">
@@ -20,7 +23,212 @@ http://gcdn.gcpowertools.com.cn/showtopic-36421-1-1.html/   ---->  总结一些J
 
 
 
-面试题：
-// js基础
-1.js中什么类型是引用传递，什么类型是值传递？ 如何将值传递
 
+
+
+
+
+
+/*************************************************************************************************************************************************************************************/
+
+公司FileZilla 服务器配置：
+贵州服务器
+name:114.135.113.184:8282 用户名:active  密码:active@1907
+
+山东服务器
+name:sd4g.cn 用户名:cloud  密码:cloud@1607
+
+河南服务器
+name:hn.yuny.com.cn:8282 用户名:active  密码:active@1907
+
+10服务器
+name:172.16.0.10 用户名:cloud  密码:cloud
+
+
+
+
+
+
+
+http://www.whycss.com/
+https://github.com/jikeytang/front-end-collect
+http://www.daqianduan.com/nav
+http://sentsin.com/daohang/
+http://123.jser.us/
+http://www.css88.com/nav/
+http://www.zhihu.com/question/19951193
+有哪些不错的前端开发博客
+http://www.zhihu.com/question/20246142
+知乎上，前端开发领域有哪些值得推荐的问答
+http://codepen.io/majinyun0802/full/CBhoD
+http://www.zhihu.com/question/19565118
+好的技术博客有哪些
+http://www.zhihu.com/question/22902084
+国外，前端领域有什么出名的论坛或者社区
+https://github.com/JacksonTian/fks
+前端知识结构
+http://www.haourl.cn/
+http://jsfiddle.net/ben304/JZnD2/
+https://www.v2ex.com/t/41396
+http://www.yangqq.com/web/css3demo/index.html
+
+黑：
+http://www.heibaipig.com/blog/
+
+http://www.kuiyu.net/art-34.html  图标样式网
+
+https://github.com/jobbole/awesome-javascript-cn    //JavaScript 资源大全中文版
+
+https://tinypng.com   //压缩图片网址
+
+//伯乐在线
+http://www.jobbole.com/   //伯乐在线（用户名：baixue zhangpeng0106@.）
+
+老骆的博客教程地址：http://www.poised-flw.com/
+
+无码高清网盘地址：http://pan.baidu.com/s/1mgiMeCC 
+
+B站高清视频地址：http://space.bilibili.com/12288162#!/index
+
+B站周末直播地址：http://live.bilibili.com/48170
+
+http://www.runoob.com/   //学习bootstrap
+
+http://www.jianshu.com/p/2e95c0132a51  -----> vue入门
+
+http://element.eleme.io/#/zh-CN/component/installation  -----> 饿了么团队的UI框架Element，基于VUE2.0做的组件
+
+https://github.com/halower/vue2-tree/blob/master/README.md   -----> Vue树形组件
+
+
+/**********Vue模板组件，实现Tab选项卡功能*****************/
+http://www.jianshu.com/p/23e041fc013e
+http://blog.csdn.net/u014488318/article/details/52909740
+http://blog.csdn.net/qq_16559905/article/details/54931842
+http://www.jianshu.com/p/b521d33a540b
+/**********Vue模板组件，实现Tab选项卡功能*****************/
+
+
+
+
+/*********************************************************** 书签管理 ****************************************************/
+http://qiye.163.com/login/?from=ym  -----> 企业邮箱
+账号：baixue@mobicloud.com.cn  密码：xiaobai0111
+
+http://git.mobicloud.com.cn/users/sign_in   -----> gitLab公司
+账号：baixue@mobicloud.com.cn  密码：xiaobai0111
+
+http://worktime.mobicloud.com.cn/html/login.html  -----> 工时
+
+wxf70b361fc3a65651 -----> 微信小程序appId
+
+https://mp.weixin.qq.com/wiki/home/index.html  -----> 微信公众号开发者文档
+
+http://www.58pic.com/wy/     ------> 千图网
+
+http://www.jquery123.com/     -----> JQuery API 中文网
+
+http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html    -----> JS 解决跨域
+
+http://mj.97tongcheng.com/api_doc/index.php?act=api&op=testApi&id=159&tag=9    -----> API 接口管理工具
+
+https://github.com/mumuy/widget   -----> GitHub 
+
+http://v3.bootcss.com/css/     -----> 全局CSS样式 - BootStrap 中文文档
+
+http://www.runoob.com/   -----> 菜鸟教程，学习资料
+
+http://study.163.com/member/login.htm?returnUrl=aHR0cDovL3N0dWR5LjE2My5jb20vbXk.   ----> 网易云课堂
+
+http://echarts.baidu.com/index.html    -----> ECharts(纯 Javascript 的图表库)
+
+http://es6.ruanyifeng.com/#docs/generator    -----> Generator 函数（异步编程）
+
+https://developer.mozilla.org/zh-CN/docs/Web/Tutorials   -----> “教程”主要是一些前端入门指导教材
+
+https://daneden.github.io/animate.css/    -----> animate 动画效果
+
+http://koa.bootcss.com/  -----> koa 中文网(基于Node.js)
+
+http://cn.vuejs.org/  -----> Vue.js
+
+http://router.vuejs.org/zh-cn/  -----> v-router 文档
+
+http://www.cnblogs.com/bluedoctor/p/5885148.html   -----> vuejs 入门只能（含sublime text 3 配置）
+
+http://npm.taobao.org/   ----> 淘宝 NPM 镜像
+
+http://www.itnose.net/detail/6007863.html  -----> 安装grunt js压缩工具
+
+https://segmentfault.com/   -----> 老黑推荐segmentfault 学习网站
+账号：1187314214@qq.com   密码：zhangpeng0106@.
+
+http://www.css88.com/doc/webpack2/  -----> webpack 中文文档
+
+ttp://www.iconfont.cn/   -----> 图标库
+
+https://icomoon.io/   -----> 图标字体制作
+
+http://cssreset.com/  -----> css reset官网
+
+http://www.bootcss.com/p/bsie/   -----> 鄙视iE (bootstrap兼容ie) 
+
+https://segmentfault.com/a/1190000008470355?utm_source=tuicool&utm_medium=referral      ---- > axios 中文文档
+
+http://element.eleme.io/#/zh-CN/component/radio    ----->  Element中文文档
+
+http://exploringjs.com/es6/  -----> ES6文档
+
+https://www.mockplus.cn/download   -----> 制作页面模型工具
+
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+http://jspang.com/2017/05/22/vuedemo/  -------------------------------（最近需要学习的）Vue视屏
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+http://one-div.com/   -----> 纯css图标（特点：所有图标都只用一个div实现）
+
+https://hexo.io/zh-cn/docs/index.html   -----> hexo博客
+
+http://www.jianshu.com/p/e99ed60390a8   -----> hexo简书（如何搭建）
+
+http://www.xiazaiba.com/jiaocheng/2453.html   ----> 解决谷歌浏览器“应用商店”进不去问题
+
+https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000  ---->  github 中文网
+
+http://iamwr.com/  ----> hexo 博客样例
+
+https://zhuanlan.zhihu.com/p/26625249   -----> github + hexo 搭建个人博客详细过程 
+
+https://www.zhihu.com/question/21193762  ------> 使用hexo，如果换了电脑怎么更新博客
+
+https://zhuanlan.zhihu.com/p/25767532   ----->  在腾讯云上部署Hexo博客
+
+https://github.com/opendigg/awesome-github-vue   -----> vue相关插件
+
+http://www.myjson.com/   ----> 生成数据，但不可以传参数
+
+http://mockjs.com/  ---->  前后端分离时，模拟数据生成接口，可以传参，并且可以返回你想要的数据
+
+https://github.com/jobbole/awesome-javascript-cn  -----> javascript 学习资源
+
+https://github.com/sass/sass -----> css学习资源
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//微信小程序appId
+wxf70b361fc3a65651
