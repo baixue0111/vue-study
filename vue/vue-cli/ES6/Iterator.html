@@ -14,6 +14,9 @@
         ol li {
             font-size: 16px;
         }
+        ul li{
+            list-style: none;
+        }
         .color{
             color: #CB1623;
         }
@@ -44,7 +47,48 @@
    </ol>
    <p>每次调用<span class="color">next()</span>方法，都会返回数据结构的当前成员的信息，具体来说，就是返回一个包含
     <span class="color">value</span>属性是当前成员的值，<span class="color">done</span>属性是一个布尔值
-    ，表示遍历是否结束。</p>
+    ，表示遍历是否结束(true 表示遍历结束)。</p>
+    <h3>原生具备Iterator接口的数据结构如下：</h3>
+    <ol>
+        <li>Array</li>
+        <li>Map</li>
+        <li>Set</li>
+        <li>String</li>
+        <li>TypedArray</li>
+        <li>函数的arguments对象</li>
+        <li>NodeList对象</li>
+    </ol>
+    <h3>调用Iterator接口的场合</h3>
+    <hr>
+    <ol>
+        <li>解构赋值</li>
+        <li>扩展运算符</li>
+        <li>yieId*</li>
+        <li>
+            <p>其他场合</p>
+            <ul>
+                <li>-for...of</li>
+                <li>-Array.from()</li>
+                <li>-Map(), Set(), WeakMap(), WeakSet()(比如new Map([['a', 1], ['b', 2]]))</li>
+                <li>-Promise.all()</li>
+                <li>-Peomise.race()</li>
+            </ul>
+        </li>
+    </ol>
+    <h3>for...in循环的几个缺点：</h3>
+    <ul>
+        <li>-数组的键名是数字，但是foe...in循环是以字符串作为键名'0', '1', '2'等等</li>
+        <li>-for...in循环不仅遍历数字键名，还会遍历手动添加的其他键，甚至包括原型上的键。</li>
+        <li>-某些情况下，for...in循环会以任意顺序遍历键名</li>
+    </ul>
+    <p>总之for...in循环主要是为遍历对象而设计的，不适合用于遍历数组。</p>
+    <h3>for...of循环的优点</h3>
+    <hr>
+    <ul>
+        <li>-有着同for...in一样的简洁语法，但是没有for...in那些缺点。</li>
+        <li>-不同forEach方法，它可以与break、continue和return配合使用。</li>
+        <li>-提供了遍历所有数据结构的统一操纵接口。</li>
+    </ul>
 </body>
 <script>
 
@@ -52,6 +96,7 @@
     var it = makeIterator(['a', 'b']);
     console.log(it.next());  // Object {value: "a", done: false}
     console.log(it.next());   // Object {value: "b", done: false}
+    console.log(it.next());  //  {value: undefined, done: true}
     
     function makeIterator(array) {
         var nextIndex = 0;
@@ -60,6 +105,132 @@
                 return nextIndex < array.length ? {value: array[nextIndex++], done: false} : {value: undefined, done: true};
             }
         }
+    }
+    // makeIterator函数简写形式
+    /* function makeIterator(array) {
+        var nextIndex = 0;
+        return {
+            next: function () {
+                return nextIndex < array.length ? {value: array[nextIndex++]} : {done: true};
+            }
+        };
+    } */
+
+    // 默认Iterator接口
+    const obj = {
+        [Symbol.iterator] : function () {
+            return {
+                next: function () {
+                    return {
+                        value: 1,
+                        done: true
+                    };
+                }
+            };
+        }
+    }
+
+    // 数组的Symbol.Iterator属性
+    let arr = ['a', 'b', 'c'];
+    // arr 是一个数组，原生就具有遍历器接口，部署在arr的Symbol.iterator属性上面，所以，调用这个属性，就得到遍历的对象
+    let iter = arr[Symbol.iterator]();   
+    console.log(iter);   // Array Iterator {}
+    console.log(iter.next());  //  {value: "a", done: false}
+    console.log(iter.next());   //  {value: "b", done: false}
+    console.log(iter.next());    //  {value: "c", done: false}
+    console.log(iter.next());    //  {value: undefined, done: true}
+
+    // 类部署Iterator接口的写法
+    class RangeIterator {
+        constructor(start, stop) {
+            this.value = start;
+            this.stop = stop;
+        }
+
+        [Symbol.iterator]() {return this;}
+
+        next() {
+            var value = this.value;
+            if(value < this.stop) {
+                this.value++;
+                return {done: false, value: value};
+            }
+
+            return {done: true, value: value};
+        }
+    }
+
+    function range(start, stop) {
+        return new RangeIterator(start, stop);
+    }
+
+    for (var value of range(0, 3)) {
+        console.log(value);   // 0 1 2
+    }
+
+    // 1.解构赋值,对数组和Set对象进行解构赋值时，会默认调用Symbol.Iterator方法
+    let set = new Set().add('a').add('b').add('c');
+    console.log(set);   //  {"a", "b", "c"}
+    let [x, y] = set;
+    let [first, ...rest] = set;
+    console.log([x, y]);  // ["a", "b"]
+    console.log([first, ...rest]);   // ["a", "b", "c"]
+
+    // 2.扩展运算符
+    var str = 'Hello';
+    [...str];
+    console.log([...str]);   //  ["H", "e", "l", "l", "o"]
+    console.log([...str][0]);  // H
+
+    var arrk = ['b', 'c'];
+    console.log(['a', ...arrk, 'd']);  // ["a", "b", "c", "d"]
+
+    // for...in 循环，只能获得对象的键名，不能直接获取键值。for...of 遍历可以获得键值
+    var arr1 = ['a', 'b', 'c', 'd'];
+    for (let val in arr1) {
+        console.log(val);  // 0 1 2 3
+    }
+
+    for(let val of arr1) {
+        console.log(val);  // a b c d
+    }
+
+    let arr2 = [3, 5, 7];
+    arr2.foo = 'Hello';  // 定义arr属性foo
+    for (let val in arr2) {
+        console.log(val);  // 0 1 2 foo
+    }
+
+    for (let val of arr2) {
+        console.log(val);  // 3 5 7
+    }
+
+    // set 和 map 结构
+    var engines = new Set(['Gecko', 'Trident', 'Webkit', 'Wsebkit']);
+    for (let val of engines) {
+        console.log(val);   // Gecko  Trident  Webkit  (后两个重复)
+    }
+
+    var es6 = new Map();
+    es6.set('edition', 6);
+    es6.set('committee', 'TC39');
+    es6.set('standard', 'ECMA-262');
+    for (let [name, value] of es6) {
+        console.log(name + ':' + value);  // edition:6  committee:TC39  standard:ECMA-262
+    }
+
+    //遍历map
+    let map = new Map().set('a', 1).set('b', 2);
+    for (let val of map) {
+        console.log(val);   // ["a", 1]  ["b", 2]
+    }
+
+    // 使用break语句，跳出for...of循环
+    let fibonacci = [99, 101, 100];
+    for(var n of fibonacci) {
+        if(n > 100) 
+        break;  // 如果n>100执行完循环体然后退出循环，
+        console.log(n);  // 99
     }
 </script>
 </html>
