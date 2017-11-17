@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Generator 函数的语法</title>
+    <style>
+        *{
+            margin: 10px;
+            padding: 0;
+        }
+        ol li {
+            font-size: 16px;
+        }
+        span{
+            color: #CB1623;
+        }
+    </style>
+</head>
+<body>
+    <h3>Generator 函数的语法</h3>
+    <hr>
+    <p>Generator 函数是ES6提供的一种异步编程解决方案，语法行为与传统的函数完全不同。Generator函数是一个状态机，封装了多个内部状态。
+        执行Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，
+        可以依次遍历Generator函数内部的每一个状态。形式上，Generator函数是一个普通的函数，但是有两个特征。一是：<span>function</span>
+        关键字与函数名之间有一个星号；二是，函数体内部使用<span>yield</span>表达式，定义不同的内部状态（<span>yield</span>在英语里的意
+        思就是“产出”）。
+    </p>
+    <h3>yield 表达式</h3>
+    <hr>
+    <p>由于Generator 函数返回的遍历器对象，只有调用<span>next</span>方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。
+    <span>yield</span>表达式就是暂停标志。</p>
+    <h3>遍历器对象的next方法的运行逻辑如下：</h3>
+    <ol>
+        <li>遇到<span>yield</span>表达式，就暂停执行后面的操作，并将紧跟在<span>yield</span>后面的那个表达式的值，作为返回的对象的<span>value</span>属性值。</li>
+        <li>下一次调用<span>next</span>方法时，在继续往下执行，直到下一个<span>yield</span>表达式。</li>
+        <li>如果没有在遇到新的<span>yield</span>表达式，就一直运行到函数结束，直到<span>return</span>语句为止，并将<span>return</span>语句后面的表达式的值，作为返
+            回的对象的<span>value</span>属性值。</li>
+        <li>如果该函数没有<span>return</span>语句，则返回的对象的<span>value</span>属性值为<span>undefined</span>.</li>
+    </ol>
+    <p>需要注意的是，<span>yield</span>表达式后面的表达式，只有当调用<span>next</span>方法、内部指针指向该语句时才会执行，因此等于为Javascript提供了手动的“惰性求值”
+    的语法功能。</p>
+    <h3>yield 和 return 语句的区别</h3>
+    <hr>
+    <p><span>yield</span>表达式与<span>return</span>语句都能返回紧跟在语句后面的那个表达式的值，区别在于每次遇到<span>yield</span>，函数暂停执行，下次再从该位置继续向后
+    执行，而<span>return</span>语句不具备位置记忆的功能。一个函数里面，只能执行一次（或者说一个）<span>return</span>语句，但是可以执行多次（或者多个）<span>yield</span>
+    表达式。正常函数只能返回一个值，因为只能执行一次<span>retuen</span>；Generator 函数可以返回一系列的值，因为可以有任意多个<span>yield</span>。从另一个角度看，也就是说
+    Generator生成了一系列的值，这也就是它的名称的来历</p>
+</body>
+<script>
+function* helloWorldGenerator() {
+    yield 'Hello';
+    yield 'world';
+    return 'ending';
+}
+var hw = helloWorldGenerator();
+console.log(hw);   // helloWorldGenerator {[[GeneratorStatus]]: "suspended"} 返回指向内部状态的指针对象，也就是Iterator Object
+// 必须调用遍历器对象内部的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，
+// 直到遇到下一个yield表达式（或return 语句）
+console.log(hw.next());  // Object {value: "Hello", done: false}  done的值为false表示遍历还没有结束
+//console.log(hw.next().value);  // Hello
+console.log(hw.next());  // Object {value: "world", done: false}
+//console.log(hw.next().value)  // world
+console.log(hw.next());  // Object {value: "ending", done: true}  done的值为true 表示遍历结束
+//console.log(hw.next().value)  // ending
+console.log(hw.next());  // {value: undefined, done: true}
+
+function* gen() {
+    yield 123 + 456;
+}
+let genGen = gen();
+console.log(genGen.next());  //  {value: 579, done: false}
+//console.log(genGen.next().value);  // 579
+console.log(genGen.next());  // Object {value: undefined, done: true}
+
+// 暂缓执行函数
+function* f() {
+    console.log('执行了！');
+}
+var genterator = f();
+
+// setTimeout(function () {
+//     console.log(genterator.next());  // 先打印出 执行了！  然后打印出：Object {value: undefined, done: true}
+// }, 2000);
+
+// 与Iterator 接口的关系
+var myIterator = {};
+myIterator[Symbol.iterator] = function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+console.log([...myIterator]);  // [1, 2, 3]
+
+// next 方法的参数
+function* foo(x) {
+    var y = 2 * (yield (x + 1));
+    var z = yield (y / 3);
+    return (x + y + z);
+}
+var a = foo(5);
+console.log(a.next().value);  // 6
+console.log(a.next());  // Object {value: NaN, done: false}
+
+var b = foo(5);
+console.log(b.next());  // Object {value: 6, done: false}
+console.log(b.next(12));  // Object {value: 8, done: false}
+console.log(b.next(13));  // Object {value: 42, done: true}
+</script>
+</html>
