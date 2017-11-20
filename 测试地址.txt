@@ -1,0 +1,179 @@
+
+
+/+++++++++++++++++++++++++++++++++++++++++++++++ 山东、河北、黑龙江的项目同一上上传到cloud@sd4g.cn +++++++++++++++++++++++++++++++++++++++++++++++/
+
+
+
+
+
+/************************************************************ 河南 ********************************************************/
+
+http://mobicloud.com.cn/treasure    // 河南流量测试地址(2016年7月1号--2016年7月18号完成)
+
+http://hn.yuny.com.cn/files/webflow/   爱流量线上地址
+
+http://in.mobicloud.com.cn/activities/salesflow_web/index.html  爱流量web测试地址
+
+http://in.mobicloud.com.cn/activities/hnguaguale/index.html  河南中秋节刮刮乐测试地址
+
+http://hndx.me/files/mid/index.html    河南中秋节刮刮乐上线地址
+
+http://hn.yuny.com.cn/files/hnsy/index.html    // 河南双11
+
+http://in.mobicloud.com.cn/activities/doubleDay/index.html   // 双旦活动测试地址
+15910403685 开头的手机号也行
+
+http://hndx.me/files/doubleDay/index.html    //河南双旦活动线上地址
+
+http://in.mobicloud.com.cn/activities/webflowTest/index.html  //河南web版爱流量测试地址
+
+//爱流量web微信版（测试）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6236fb8ca0e9684d&redirect_uri=http://in.mobicloud.com.cn/activities/webflowTest/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//爱流量web微信版（线上）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6236fb8ca0e9684d&redirect_uri=http://hn.yuny.com.cn/files/webflow/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect 
+
+//河南微信绑定
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6236fb8ca0e9684d&redirect_uri=http://in.mobicloud.com.cn/activities/hnwxBind/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+1337394
+
+//河南微信绑定（线上）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6236fb8ca0e9684d&redirect_uri=http://hn.yuny.com.cn/files/hnwxBind/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+/************************************************************ 以上河南 ********************************************************/
+
+/************************************************************* 贵州活动（http://gzdx.me/   贵州新域名）****************************************************/
+
+http://114.135.113.184/active/gzLeTv/index.html  /*贵州乐视答题上线地址*/
+
+http://in.mobicloud.com.cn/activities/gzLeTv/index.html  // 贵州乐视答题测试地址
+
+http://in.mobicloud.com.cn/activities/weixin/index.html   /*贵州乐视抽奖测试地址*/
+
+http://114.135.113.184/active/weixin/index.html      /*贵州乐视抽奖上线地址*/
+
+http://114.135.113.184/active/gzzhongqiu/index.html  /*贵州中秋节上线地址（耿）*/
+
+http://114.135.113.184/active/gzgq/index.html   /*贵州国庆节上线地址（耿）*/
+
+http://gzdx.me/active/shop/index.html  贵州流量超市上线地址
+
+http://114.135.113.184/active/xiaoshou/login.html  //贵州销售助手web版(线上)
+账号密码：18908518868  /123456  
+
+http://gzdx.me/active/wxbd/index.html   贵州微信绑定
+
+//贵州微信绑定(长链接)
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz.mobicloud.com.cn/active/wxbd/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//贵州卖终端测试访问地址
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb133be61f42dc4e1&redirect_uri=http://in.mobicloud.com.cn/activities/sellPhone/tj_details.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+
+//贵州卖终端测试访问地址（me）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz.mobicloud.com.cn/active/sellPhone/far_details.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//贵州卖终端线上访问地址
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/sellPhone2/far_details.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+// 流量超市
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/shop/index.html&response_type=code&scope=snsapi_base&state=123&openId=openId#wechat_redirect
+
+// 贵州客服（流量超市）地址
+https://gz.mobicloud.com.cn/active/shoppig/index.html?openid=CTdaElFiUzMBC1R4AG8EGgVzDU0HJgBDBzECaAA5WxpSSlABBmEHEwENVmRVdgAZAzFSG1ExBmo%3D&cid=100&phone=CWlaalFiUzIBZFQ9AGcEbAU0DTIHZg%3D%3D&t=9&sign=3149717978072587c8bbe196b9630f18&bindType=&img=http://wx.qlogo.cn/mmopen/I8njsFxoUGcJ0EyRu5l52VebmWuyqrAGgRz5DjOoic5mXY300lXNOfP5eoNWNmJxqia4GUm5lsNaHhXnqMTWqu4R6dvhxTOKN3/0&areacode=0851
+
+//贵州计费查询（流量查询）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz.mobicloud.com.cn/active/query/bill.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//贵州春节游戏
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/gzGame/game.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect 
+
+//贵州“晒流量，送流量”
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/sunFlow/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//贵州“随机码 领流量”活动
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/randoCode/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+//我的棒豆
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/integral/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+
+http://gz2.mobicloud.com.cn/active/noWX-replacePackage/index.html    // 贵州换套餐活动页面（非微信端）
+陈恩     18084351639    8310  //测试信息
+// 贵州换套餐活动页面（微信端）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/WX-replacePackage/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+
+//贵州日租包活动（微信版）
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=http://gz2.mobicloud.com.cn/active/wdayPackage/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+// 贵州日租包活动手机浏览器版
+
+http://gz.mobicloud.com.cn/active/dayPackage/index.html
+
+// 贵州日租包活动PC版
+http://gz.mobicloud.com.cn/active/pc-dayPackage/index.html
+
+// 贵州双十一买流量送流量活动
+http://gz.mobicloud.com.cn/active/buyFlow/index.html
+
+// 贵州异网营销活动（查看战绩是首页） 	// 15338516191
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9f4355fc38716ace&redirect_uri=https://gz2.mobicloud.com.cn/active/diffnetUser/myRecord/index.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+
+// 贵州异网营销活动（推荐好友是首页）  	// 15338516191
+https://gz.mobicloud.com.cn/active/diffnetUser/diffNetworkUser/myRecommend.html
+
+/************************************************************************ 山东活动 *********************************************************************/
+
+http://sd4g.cn/active/3g/hd.html?phoneno=xx   山东3g上线访问地址（11月）
+
+// 山东终端换机测试地址
+
+http://in.mobicloud.com.cn/activities/exchange/details.html  //测试环境地址
+
+http://sd4g.cn/exchange?p=E96CBCF543DAB9202525DA7085014A18  //跳转地址
+
+http://sd4g.cn/active/share4G/index.html  //山东共享4G活动
+短链：http://sd4g.cn/share 
+
+//山东——济南
+http://sd4g.cn/active/sd-jn/hot.html    //测试地址
+
+
+/************************************************************************ 河北活动 *********************************************************************/
+
+http://sd4g.cn/active/allNetcom/allNetcom.html   //河北全网通测试地址
+
+http://hb4g.cn/active/allNetcom/allNetcom.html   //河北全网通线上地址
+
+http://sd4g.cn/active/Recommend4G/index.html   //河北保定4G手机推荐短信测试地址
+
+http://hb4g.cn/active/Recommend4G/index.html   //河北保定4G手机推荐短信线上地址
+
+http://hb4g.cn/active/weixinSendFlow/index.html  //河北保定微信送流量活动 
+测试号：15511257293   15633280078  15531273302
+
+http://hb4g.cn/active/offsetFlow/index.html   //河北保定抵消送流量活动
+
+http://hb4g.cn/active/weixinGetFlow/index.html  // 保定微信送流量活动页面链接
+
+http://hb4g.cn/4g     河北保定4G手机推荐页面短链接
+
+
+/************************************************************************ 山西活动 *********************************************************************/
+
+http://in.mobicloud.com.cn/activities/sxcj/index.html   /*山西抽奖测试地址*/
+
+
+/************************************************************************ 黑龙江活动 *********************************************************************/
+
+//黑龙江
+http://lj4g.cn/UK_AXhTDyu   //黑龙江沃4G
+
+
+
+
+me openId :oKH8cw6iaaBLpqt5YCXRR8dLZVCc (贵州公众号openId)
+8972654889726548897265488972654889726548897265488972654889726548
+
