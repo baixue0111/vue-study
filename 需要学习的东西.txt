@@ -232,6 +232,5 @@ js框架： extjs\semantic\seajs\weex
 
 
 
-
 //微信小程序appId
 wxf70b361fc3a65651
