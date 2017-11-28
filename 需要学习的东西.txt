@@ -213,11 +213,17 @@ https://github.com/jobbole/awesome-javascript-cn  -----> javascript 学习资源
 
 https://github.com/sass/sass -----> css学习资源
 
+http://www.semantic-ui.cn/   ----> Semantic UI 框架
 
+http://weex.apache.org/cn/guide/index.html  ----> weex 跨平台开发与vue合作
 
+http://yslove.net/seajs/ ----> seajs 模块化开发框架
 
+https://mcxiaoke.gitbooks.io/mqtt-cn/content/  -----> mqtt 基于客户端-服务器的消息发布/订阅传输协议
 
+http://www.ruanyifeng.com/blog/2015/03/react.html -----> react.js 阮一峰React入门教程
 
+js框架： extjs\semantic\seajs\weex
 
 
 
