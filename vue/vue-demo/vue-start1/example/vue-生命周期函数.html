@@ -40,38 +40,55 @@
            } 
         },
         beforeCreate: function () {
-            console.log("1 - beoforeCreate 创建之前");
+            showData("1 - beoforeCreate 创建之前(创建vue实例之前)：" , this);
+            console.log(this)
         },
         created: function () {
-            console.log("2 - created 实例创建完成");
+            showData("2 - created 实例创建完成: " , this);
         },
         beforeMount: function () {
-            console.log("3 - beforeMount 挂载之前");
+            showData("3 - beforeMount 挂载之前(挂载到Dom之前):" , this);
         },
         mounted: function () {
-            console.log("4 - mounted el被创建并挂载到实例");
+            showData("4 - mounted el被创建并挂载到实例(挂载Dom之后):" , this);
         },
         beforeUpdate: function () {
-            console.log("5 - beforeUpdate 数据更新之前");
+            showData("5 - beforeUpdate 数据更新之前", this);
         },
         updated: function () {
-            console.log("6 - updated 数据更新之后");
-        },
+            showData("6 - updated 数据更新之后", this);
+        }
+        ,
         activated: function () {
-            console.log("7 - activated keep-alive组件激活是调用");
+            showData("7 - activated keep-alive组件激活是调用(该钩子在服务器端渲染期间不被调用)", this);
         },
         deactivated: function () {
-            console.log("8 - deactivated keep-alive组件停用时调用");
+            showData("8 - deactivated keep-alive组件停用时调用(该钩子在服务器端渲染期间不被调用)", this);
         },
         beforeDestroy: function () {
-            console.log("9 - beforeDestroy 销毁之前");
+            app.message = 1111;
+            showData("9 - beforeDestroy 销毁之前(vue实例销毁前)", this);
         },
         destroyed: function () {
-            console.log("10 - destroyed 销毁之后");
+            showData("10 - destroyed 销毁之后(vue实例销毁之后)", this);
         }
         //template: "#tem2"
         //template: "#tem"
         //template: `<p>我是template</p>`
     })
+
+    function showData(process, obj) {
+        console.log(process);
+        console.log('data数据：' + obj.message);
+        console.log('挂载的对象：');
+        console.log(obj.$el);
+        realDom();
+        console.log('----------------------------');
+        console.log('----------------------------');
+
+    }
+    function realDom() {
+        console.log('真是的Dom结构:' + document.getElementById('app').innerHTML);
+    }
 </script>
 </html>
