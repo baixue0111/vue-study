@@ -12,5 +12,8 @@ export default {
 </script>
 
 <style lang="scss" rel="stylesheet">
-
+#app{
+  margin: 0;
+  padding: 0;
+}
 </style>
