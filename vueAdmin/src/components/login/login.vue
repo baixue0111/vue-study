@@ -5,13 +5,13 @@
             <!-- <div class="login_box"> -->
                 <h3>系 统 登 录</h3>
                 <div class="user_ipt">
-                    <el-input placeholder="用户名" v-model="inputValue" id="user_ipt" clearable></el-input>                    
+                    <el-input placeholder="用户名" v-model="inputValue" id="user_ipt" clearable ref="userName"></el-input>
                 </div>
                 <div class="user_pass">
-                    <el-input placeholder="密码" v-model="inputPass" id="user_pass" clearable></el-input>                    
+                    <el-input placeholder="密码" v-model="inputPass" id="user_pass" type="password" clearable></el-input>
                 </div>
                 <div class="error"></div>
-                <el-button type="primary" style="width: 328px;">登 录</el-button>
+                <el-button type="primary" style="width: 328px;" @click="signIn()">登 录</el-button>
             <!-- </div> -->
         </el-col>
     </el-row>
@@ -33,6 +33,12 @@
             //console.log(this.$refs.canvas); // undefined
         },
         mounted () {
+          var canvas = this.$refs.canvas;
+          window.addEventListener('resize', resizeCanvas, false);
+            function resizeCanvas() {
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+            }
             // console.log(this.$refs.canvas);
             var canvas = this.$refs.canvas;
             var ctx = canvas.getContext('2d');
@@ -69,11 +75,11 @@
             function mixComponents(comp1, weight1, comp2, weight2) {
                 return (comp1 * weight1 + comp2 * weight2) / (weight1 + weight2);
             }
-            
+
             function averageColorStyles(dot1, dot2) {
                 var color1 = dot1.color,
                     color2 = dot2.color;
-                
+
                 var r = mixComponents(color1.r, dot1.radius, color2.r, dot2.radius),
                     g = mixComponents(color1.g, dot1.radius, color2.g, dot2.radius),
                     b = mixComponents(color1.b, dot1.radius, color2.b, dot2.radius);
@@ -98,7 +104,7 @@
                 this.radius = Math.random() * 2;
 
                 this.color = new Color();
-                console.log(this);
+//                console.log(this);
             }
 
             Dot.prototype = {
@@ -166,7 +172,7 @@
                 moveDots();
                 connectDots();
                 drawDots();
-                requestAnimationFrame(animateDots);	
+                requestAnimationFrame(animateDots);
             }
 
             canvas.addEventListener('mouseover', function (e) {
@@ -176,7 +182,8 @@
             })
 
             canvas.addEventListener('mouseleave', function (e) {
-                console.log(canvas.width);
+//                console.log(canvas.width);
+//                console.log(canvas.height);
                 mousePosition.x = canvas.width / 2;
                 mousePosition.y = canvas.height / 2;
             })
@@ -185,16 +192,12 @@
             requestAnimationFrame(animateDots);
         },
         methods: {
-            // mousemove(e) {
-            //     // mousePosition.x = e.pageX;
-            //     // mousePosition.y = e.pageY;
-            //     //console.log(e);
-            // },
-            // mouseleave(e) {
-            //    // console.log(e);
-            //     // mousePosition.x = canvas.width / 2;
-            //     // mousePosition.y = canvas.height / 2;
-            // }
+          signIn() {
+            let user_name = this.inputValue;
+            let user_pass = this.inputPass;
+            console.log(`用户名：${user_name}`);
+            console.log(`密码：${user_pass}`);
+          }
         }
     }
 </script>
@@ -203,7 +206,7 @@
     background: #000;
     margin: 0;
     padding: 0;
-    // position: relative;
+    /*position: relative;*/
     #el-col{
         text-align: center;
         color: #fff;
@@ -225,7 +228,7 @@
             margin: 20px auto;
             color: #CB1623;
         }
-    }    
+    }
     #canvas{
         width: 100%;
         height: 100%;
