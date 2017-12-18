@@ -3,18 +3,18 @@
     <el-row>
       <el-col :span="24">
         <div class="formBox">
-          <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="57px" class="ruleForm">
+          <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
             <el-form-item>
               <h3 class="title">系 统 登 录</h3>
             </el-form-item>
-            <el-form-item label="用户名" prop="userName">
-              <el-input placeholder="用户名" v-model="ruleForm.inputValue" id="user_ipt" clearable auto-complate="off" class="user_ipt"></el-input>
+            <el-form-item label="用户名" prop="username">
+              <el-input type="password" v-model="ruleForm2.username" auto-complete="off" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
-              <el-input placeholder="密码" v-model="ruleForm.inputPass" id="user_pass" type="password" clearable class="user_ipt"></el-input>
+              <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" style="width: 328px;" @click="subform('ruleForm')">登 录</el-button>
+              <el-button type="primary" @click="submitForm('ruleForm2')">登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -29,33 +29,34 @@
   export default {
     name: 'login',
     data () {
-      var validateName = (rule, value, callback) => {
-          if(value === "") {
-              return callback(new Error("请输入用户名！"));
-          } else {
-            let reg_user = /^[a-zA-Z0-9_-]{4,16}$/;
-            if(!reg_user.test(value)) {
-                return callback(new Error("请输入正确的用户名！"));
-            }
-          }
-      };
-
       var validatePass = (rule, value, callback) => {
-          if(value === "") {
-              return callback(new Error("请输入密码！"));
+        if(value === "") {
+          callback(new Error("请输入用户名！"));
+        } else {
+          let reg_user = /^[a-zA-Z0-9_-]{4,16}$/;
+          if(!reg_user.test(value)) {
+            callback(new Error("请输入正确的用户名！"));
           }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if(value === "") {
+          callback(new Error("请输入密码！"));
+        }
+        callback();
       };
       return {
-        ruleForm: {
-          inputValue: '',
-          inputPass: ''
+        ruleForm2: {
+          username: '',
+          pass: ''
         },
-        rules: {
+        rules2: {
           username: [
-             {validate: validateName, trigger: 'blur'}
+            { validator: validatePass, trigger: 'blur' }
           ],
-          userpass: [
-            {validate: validatePass, trigger: 'blur'}
+          pass: [
+            { validator: validatePass2, trigger: 'blur' }
           ]
         }
       }
@@ -224,21 +225,15 @@
       requestAnimationFrame(animateDots);
     },
     methods: {
-      signIn_btn() {
-//        let user_name = this.ruleForm.inputValue;
-//        let user_pass = this.ruleForm.inputPass;
-//
-//        // 用户名正则
-//
-//        // 密码正则
-//        let pass_length = user_pass.length;
-//        if (!reg_user.test(user_name))
-//          console.log(`用户名：${user_name}`);
-//        console.log(`密码：${user_pass}`);
-
-      },
-      subform(forname) {
-          this.$refs
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       }
     }
   }
@@ -257,15 +252,12 @@
       left: 50%;
       width: 390px;
       margin-left: -195px;
+      .title {
+        color: #fff;
+        margin: 0;
+      }
       .el-form-item label{
         color: #fff;
-        .title {
-          color: #fff;
-        }
-        .user_ipt {
-          width: 328px;
-          margin: 0 auto;
-        }
       }
 
     }

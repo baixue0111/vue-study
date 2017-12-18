@@ -32,6 +32,7 @@ module.exports = {
       'router': path.resolve(__dirname, '../src/router'),
       'store': path.resolve(__dirname, '../src/store'),
       'style': path.resolve(__dirname, '../src/style'),
+      'header': path.resolve(__dirname, '../src/components/header'),
       'api': path.resolve(__dirname, '../src/api'),
       'jquery': "jquery"
     }
