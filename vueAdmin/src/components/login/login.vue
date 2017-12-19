@@ -251,7 +251,7 @@
       top: 30%;
       left: 50%;
       width: 390px;
-      margin-left: -195px;
+      margin-left: -229px;
       .title {
         color: #fff;
         margin: 0;
