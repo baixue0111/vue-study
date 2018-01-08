@@ -11,7 +11,8 @@ const state = {
         {id: 3, productName: "香蕉", price: 4},
         {id: 4, productName: "葡萄", price: 8},
         {id: 5, productName: "橙子", price: 1}
-    ]
+    ],
+    addCart: []
 }
 
 const getters = {
@@ -22,7 +23,7 @@ const getters = {
         var cartData = state.cartList.map( item => {
             return {
                 id: item.id,
-                name: item.productName,
+                productName: item.productName,
                 price: item.price + "元"
             }
         });
