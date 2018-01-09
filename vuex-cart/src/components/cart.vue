@@ -1,7 +1,6 @@
 <template>
     <div id="cart">
-        <h3>购物车Demo</h3>
-        <hr>
+        <h3>vuex实现购物车Demo</h3>
         <table id="cartTable" cellspacing="0" cellpadding="0">
             <tr>
                 <td>id</td>
@@ -14,11 +13,10 @@
                 <td>{{item.productName}}</td>  
                 <td>{{item.price}}</td>  
                 <td>
-                    <button class="addCartBtn" @click="addCart(item.id)">添加购物车</button>
+                    <button class="addCartBtn" @click="addCart(item)">添加购物车</button>
                 </td>  
             </tr>
         </table>
-        <hr>
         <h3>已选商品</h3>
         <table id="addCartTable" cellspacing="0" cellpadding="0">
             <tr>
@@ -28,22 +26,22 @@
                 <td>数量</td>
                 <td>操作</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>苹果</td>
-                <td>5</td>
-                <td>1个</td>
+            <tr v-for="(items, index) in showCartList"  :key="index">
+                <td>{{items.id}}</td>
+                <td>{{items.productName}}</td>
+                <td>{{items.price}}</td>
+                <td>{{items.num}}</td>
                 <td>
-                    <button class="del">删除</button>
+                    <button class="del" @click="delproduct(items)">删除</button>
                 </td>
             </tr>
         </table>
         <table class="clearTable" cellspacing="0" cellpadding="0">
             <tr>
-                <td>总数:</td>
-                <td>总价:</td>
+                <td>总数: {{totalNum}}</td>
+                <td>总价: {{totalPrice}}</td>
                 <td>
-                    <button class="clearCart">清空购物车</button>
+                    <button class="clearCart" @click="clearCart">清空购物车</button>
                 </td>
             </tr>
         </table>
@@ -51,7 +49,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     data() {
         return {
@@ -59,12 +57,15 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["cartData"])
+        ...mapGetters(["cartData"]),
+        ...mapGetters(["showCartList"]),
+        ...mapGetters(["totalPrice"]),
+        ...mapGetters(["totalNum"])
     },
     methods: {
-        addCart(amount) {  // 添加到购物车方法
-            console.log(amount);
-        }
+       ...mapActions(['addCart']),
+       ...mapActions(['delproduct']),
+       ...mapActions(["clearCart"])
     }
 }
 </script>
@@ -74,7 +75,7 @@ export default {
     text-align: center;
 }
 .addCartBtn{
-    background: #6e77eb;
+    background: #3743f1;
     box-shadow: 1px 2px 3px #ccc;
     border: none;
     padding: 5px 7px;
