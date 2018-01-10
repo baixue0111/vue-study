@@ -17,5 +17,4 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-参考链接：(http://blog.csdn.net/Zhooson/article/details/78495250)
 
