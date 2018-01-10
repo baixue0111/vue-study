@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
-    count: 1,
+    // count: 1,
     cartList: [
         {id: 1, productName: "苹果", price: 5},
         {id: 2, productName: "橘子", price: 2},
@@ -16,9 +16,9 @@ const state = {
 }
 
 const getters = {
-    newCount: (state) => {
+    /* newCount: (state) => {
         return state.count + "个";
-    },
+    }, */
     cartData: (state) => {  // 先渲染商品
         var cartData = state.cartList.map( item => {
             return {
@@ -56,7 +56,7 @@ const getters = {
 }
 
 const mutations = {
-    add: (state) => {
+/*     add: (state) => {
         setTimeout(function () {
            state.count ++;
           // console.log("已经触发add方法");
@@ -65,7 +65,7 @@ const mutations = {
     reduce: (state) => {
         state.count --;
         // console.log("已经触发reduce方法");
-    },
+    }, */
     addCartList: (state, {id}) => {  // id 是一个对象， {id} 解构id 直接返回id 的值
         let record = state.addCartData.find( n => n.id === id);
         if(!record) {
@@ -92,14 +92,14 @@ const mutations = {
 }
 
 const actions = {
-    addAction: (context) => {  // 1.context上下文对象在这里相当于store
+/*     addAction: (context) => {  // 1.context上下文对象在这里相当于store
         context.commit("add");  // actions 提交的是mutations里的方法
     },
     reduceAction: ({commit}) => {  // 2.也可以直接把commit对象传递进来，直接使用commit("reduce")提交
         setTimeout(function() {
             commit("reduce");
         }, 2000);
-    },
+    }, */
     addCart: ({commit}, payload) => {
         commit("addCartList", {   // 把选中商品的id传给addCartList方法
             id: payload.id

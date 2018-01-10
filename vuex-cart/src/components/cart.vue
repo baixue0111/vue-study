@@ -35,6 +35,9 @@
                     <button class="del" @click="delproduct(items)">删除</button>
                 </td>
             </tr>
+            <tr v-if="!showCartList.length">
+                <td colspan="5">您的购物车空空如也 ...</td>
+            </tr>
         </table>
         <table class="clearTable" cellspacing="0" cellpadding="0">
             <tr>
