@@ -12,6 +12,9 @@ export default new Router({
             component: login
         },
         {
+            path: '/'
+        },
+        {
             path: '/index',
             component: index
         }

@@ -31,24 +31,26 @@
             <span slot="title">导航三</span>
         </el-menu-item>
     </el-menu>
-   <div v-model="isCollapse" class="header" >
-    <span @click="changeBtn" :label="status">切换</span>
-   </div>
+   <el-radio-group class="header" v-model="isCollapse">
+    <!-- <span :label="getSiderStatus" @click="changeBtn">切换</span> -->
+        <el-radio-button :label="false">展开</el-radio-button>
+        <el-radio-button :label="true">收起</el-radio-button>
+   </el-radio-group>
   </div>
 </template>
 <script>
+import { mapGetters, mapActions} from 'vuex';
 export default {
     data() {
       return {
         isCollapse: true,
-        status: false
       };
     },
+    computed: {
+        ...mapGetters(["getSiderStatus"])
+    },
     methods: {
-        changeBtn() {
-            console.log(this.status);
-            this.status = !this.status;
-        },
+        ...mapActions(["changeBtn"]),
         handleOpen(key, keyPath) {
             console.log(key, keyPath);
         },
@@ -71,24 +73,14 @@ export default {
     .el-menu-vertical-demo {
         float: left;
         height: calc(100vh);
-        width: 64px;
     }
-    .el-menu-vertical-demo-leave-active, .el-menu-vertical-demo-enter-active {
-        transition: all 1s ease;
-    }
-    .el-menu-vertical-demo-leave-active,.el-menu-vertical-demo-enter {
-        width: 200px !important;
-    }
-    .el-menu-vertical-demo-leave,.el-menu-vertical-demo-enter-active {
-        width: 64px;
-    }
-    /* .el-menu-vertical-demo:not(.el-menu--collapse) {
+   
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
-        height: calc(100vh);
-    } */
+    }
     .header {
         float: left;
-        current: pointer;
+        cursor: pointer;
     }    
 }
 
