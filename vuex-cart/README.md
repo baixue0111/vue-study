@@ -3,7 +3,7 @@
 
 大致效果如下：
 
-![](https://github.com/baixue0111/vue-study/blob/master/vuex-cart/src/assets/20171114144112122.gif)
+![](https://github.com/baixue0111/vue-study/blob/master/vuex-cart/src/assets/20180110_111503.gif)
 
 #### Build Setup
 
