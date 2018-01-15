@@ -1,24 +1,27 @@
 <template>
     <el-container id="header">
-        <el-row>
-            <el-col>
-                <transition>
+        <!-- <el-row> -->
+            <el-col :span="12" class="header-left">
+                <!-- <transition>
                     <div class="header-three-parent" @click="transformBtn" :class="isRotate ? 'roate-div' : 'roated-div'">
                         <i class="header-three"></i>
                         <i class="header-three"></i>
                         <i class="header-three"></i>
                     </div>
-                </transition>
+                </transition> -->
+                <el-breadcrumb separator="/">
+                    <el-breadcrumb-item :to="{ path: '/silder' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item v-for="(items, index) in $route.meta" :key="index">{{items}}</el-breadcrumb-item>
+                </el-breadcrumb>
             </el-col>
-        </el-row>
-        <el-col :span="24" :offset="20">
+        <!-- </el-row> -->
+        <el-col :span="12" class="header-right">
             <el-dropdown class="header-dropdown">
                 <div class="el-dropdown-link user-info">
                     <span class="user-name">xiaobai</span>
                     <img src="../../assets/images/avart.jpg" alt="" class="user-avart">
                 </div>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>我的消息</el-dropdown-item>
                     <el-dropdown-item>设置</el-dropdown-item>
                     <el-dropdown-item divided>退出登录</el-dropdown-item>
                 </el-dropdown-menu>
@@ -46,7 +49,17 @@ export default {
 #header{
     background: #eff2f7;
     height: 60px;
-    line-height: 60px;    
+    line-height: 60px;
+    .header-left{
+        margin-left: 20px;
+        .el-breadcrumb{
+            line-height: 60px;
+        }
+    }    
+    .header-right{
+        text-align: right;
+        margin-right: 20px;
+    }
     .header-three-parent{
         overflow: hidden;
         width: 20px;

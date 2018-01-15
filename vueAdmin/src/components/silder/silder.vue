@@ -20,15 +20,17 @@
                     </el-menu-item>
                     <el-submenu index="2">
                         <template slot="title">
+                            <i class="el-icon-document"></i>   
                             <span>导航一</span>
                         </template>
                         <el-menu-item-group>
                             <el-menu-item index="page1">选项1</el-menu-item>
-                            <el-menu-item index="2-2">选项2</el-menu-item>
+                            <el-menu-item index="page2">选项2</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-submenu index="3">
                         <template slot="title">
+                            <i class="el-icon-news"></i>   
                             <span>导航二</span>
                         </template>
                         <el-menu-item-group>
@@ -38,6 +40,7 @@
                     </el-submenu>
                     <el-submenu index="4">
                         <template slot="title">
+                            <i class="el-icon-rank"></i>
                             <span>导航三</span>
                         </template>
                         <el-menu-item-group>
@@ -60,29 +63,29 @@
 </template>
 
 <script>
-  export default {
+
+export default {
     data(){
         return {
 
         }
     },
     methods: {
-      handleOpen(key, keyPath) {
+        handleOpen(key, keyPath) {
         console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
+        },
+        handleClose(key, keyPath) {
         console.log(key, keyPath);
-      }
+        }
     },
     computed: {
         defaultActive() {
             return this.$route.path.replace('/', '');
         }
     }
-  }
+}
 </script>
 <style lang="scss" rel="stylesheet">
-
 .headerPage {
     width: 100%;
     &:after {
