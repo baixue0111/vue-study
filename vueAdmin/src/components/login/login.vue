@@ -44,7 +44,7 @@
         if(value === "") {
           callback(new Error("请输入密码！"));
         }
-        callback();
+        callback(); 
       };
       return {
         ruleForm2: {
@@ -71,19 +71,13 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
-
       // console.log(this.$refs.canvas);
       var canvas = this.$refs.canvas;
       var ctx = canvas.getContext('2d');
-
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       ctx.lineWidth = .3;
       ctx.strokeDStyle = (new Color(150)).style;   // 定义笔触的颜色
-
-      // console.log(`canvas的宽度为：${canvas.width}`);
-      // console.log(canvas);
-
       // 定义鼠标的位置
       var mousePosition = {
         x: 30 * canvas.width / 100,
@@ -118,7 +112,6 @@
           b = mixComponents(color1.b, dot1.radius, color2.b, dot2.radius);
         return createColorStyle(Math.floor(r), Math.floor(g), Math.floor(b));
       }
-
       function Color(min) {
         min = min || 0;
         this.r = colorValue(min);
@@ -126,7 +119,6 @@
         this.b = colorValue(min);
         this.style = createColorStyle(this.r, this.g, this.b);
       }
-
       function Dot() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
@@ -137,7 +129,6 @@
         this.radius = Math.random() * 2;
 
         this.color = new Color();
-//                console.log(this);
       }
 
       Dot.prototype = {
@@ -215,12 +206,9 @@
       })
 
       canvas.addEventListener('mouseleave', function (e) {
-//                console.log(canvas.width);
-//                console.log(canvas.height);
         mousePosition.x = canvas.width / 2;
         mousePosition.y = canvas.height / 2;
       })
-
       createDots();
       requestAnimationFrame(animateDots);
     },
