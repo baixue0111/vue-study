@@ -1,7 +1,11 @@
 <template>
     <div id="table">
-        <v-header></v-header>
-        <h3>我是table.vue</h3>
+        <el-container>
+            <v-header></v-header>            
+        </el-container>
+        <el-main>
+            <h3>我是table.vue</h3>
+        </el-main>
     </div>
 </template>
 
