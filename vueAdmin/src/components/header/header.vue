@@ -16,14 +16,14 @@
             </el-col>
         <!-- </el-row> -->
         <el-col :span="12" class="header-right">
-            <el-dropdown class="header-dropdown">
+            <el-dropdown class="header-dropdown" @command="handleCommand">
                 <div class="el-dropdown-link user-info">
                     <span class="user-name">xiaobai</span>
                     <img src="../../assets/images/avart.jpg" alt="" class="user-avart">
                 </div>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>设置</el-dropdown-item>
-                    <el-dropdown-item divided>退出登录</el-dropdown-item>
+                    <el-dropdown-item command="set">设置</el-dropdown-item>
+                    <el-dropdown-item divided command="setOut">退出登录</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </el-col>
@@ -40,6 +40,14 @@ export default {
     methods: {
         transformBtn() {
             this.isRotate = !this.isRotate;
+        },
+        handleCommand(command) {
+            console.log(command);
+            if(command == 'set') {
+                this.$router.push({path: '/set'});
+            } else if(command == "setOut") {
+                // sessionStorage.removeItem('user');  // 弹出确认框
+            }
         }
     }
 }    

@@ -1,14 +1,14 @@
 <template>
-    <div id="page2">
+    <div id="table">
         <v-header></v-header>
-        <h3>我是page2.vue</h3>
+        <h3>我是table.vue</h3>
     </div>
 </template>
 
 <script>
 import header from './header/header';
 export default {
-    name: 'page2',
+    name: 'table',
     data() {
         return {
 

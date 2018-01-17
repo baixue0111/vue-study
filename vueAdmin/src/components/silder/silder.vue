@@ -24,8 +24,8 @@
                             <span>导航一</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="page1">选项1</el-menu-item>
-                            <el-menu-item index="page2">选项2</el-menu-item>
+                            <el-menu-item index="table">Table</el-menu-item>
+                            <el-menu-item index="form">Form</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-submenu index="3">
@@ -34,8 +34,8 @@
                             <span>导航二</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="3-1">选项3</el-menu-item>
-                            <el-menu-item index="3-2">选项4</el-menu-item>
+                            <el-menu-item index="echarts">ECharts</el-menu-item>
+                            <el-menu-item index="exit">编辑</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-submenu index="4">
@@ -44,8 +44,7 @@
                             <span>导航三</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="4-1">选项5</el-menu-item>
-                            <el-menu-item index="4-2">选项6</el-menu-item>
+                            <el-menu-item index="set">设置</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     </el-menu>

@@ -8,13 +8,13 @@
               <h3 class="title">系 统 登 录</h3>
             </el-form-item>
             <el-form-item label="用户名" prop="username">
-              <el-input type="password" v-model="ruleForm2.username" auto-complete="off" placeholder="请输入用户名"></el-input>
+              <el-input type="text" v-model="ruleForm2.username" auto-complete="off" placeholder="请输入用户名"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="pass">
               <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="请输入密码"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm2')">登录</el-button>
+              <el-button type="primary" @click="submitForm('ruleForm2')" :loading="isLogin">登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -47,9 +47,10 @@
         callback(); 
       };
       return {
+        isLogin: false,  // 使用改变isLogin 的值来控制“登录”按钮上的loading状态
         ruleForm2: {
-          username: '',
-          pass: ''
+          username: 'admin',
+          pass: '123456'
         },
         rules2: {
           username: [
@@ -214,9 +215,25 @@
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        console.log(this.$route.matched)
+        this.$refs[formName].validate((valid) => {   // validate() 是element组件库自定义验证方法
           if (valid) {
-            alert('submit!');
+            // console.log(this.isLogin);
+            this.isLogin = true;   
+            var loginParams = {
+              username: this.ruleForm2.username,
+              password: this.ruleForm2.pass
+            };
+            if(loginParams.username == 'admin' && loginParams.password == '123456') {   // 判断用户名和密码是否正确（正式项目此处需调用接口）
+              this.isLogin = false;
+              sessionStorage.setItem('user', JSON.stringify(loginParams));
+              this.$router.push({path: '/silder'});   // 跳转页面
+            } else {
+              this.isLogin = false;
+              this.$alert('用户名或密码错误！', '提示信息', {
+                confirmButtonText: '确定'
+              })
+            }
           } else {
             console.log('error submit!!');
             return false;
@@ -246,6 +263,9 @@
       }
       .el-form-item label{
         color: #fff;
+      }
+      button{
+        width: 290px;
       }
 
     }
