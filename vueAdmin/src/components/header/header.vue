@@ -45,8 +45,24 @@ export default {
             console.log(command);
             if(command == 'set') {
                 this.$router.push({path: '/set'});
-            } else if(command == "setOut") {
-                // sessionStorage.removeItem('user');  // 弹出确认框
+            } else if(command == "setOut") {  // 正式项目此处会调用接口
+                this.$confirm("确定要退出吗？", "提示信息", {
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    type: "warning"
+                }).then(() => {
+                    this.$message({
+                        type: "success",
+                        message: "已退出！"
+                    });
+                    sessionStorage.removeItem('user');    
+                    this.$router.push({path: '/'});
+                }).catch(() => {
+                    this.$message({
+                        type: "info",
+                        message: "已取消退出！"
+                    })
+                })
             }
         }
     }

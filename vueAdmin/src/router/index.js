@@ -28,37 +28,38 @@ export default new Router({
             path: '/silder',
             component: silder,
             children: [
+                // {
+                //     path: '',
+                //     name: 'home',
+                //     component: home,
+                //     meta: [],
+                //     hidden: true
+                // },
                 {
                     path: '',
-                    name: 'home',
-                    component: home,
-                    meta: []
-                },
-                {
-                    path: '/table',
                     name: 'table',
                     component: table,
-                    meta: ['table']
+                    meta: ['导航一', 'Table']
                 },
                 {
                     path: '/form',
                     component: form,
-                    meta: ['form']
+                    meta: ['导航一', 'form']
                 },
                 {
                     path: '/echarts',
                     component: echarts,
-                    meta: ['echarts']
+                    meta: ['导航二', 'echarts']
                 },
                 {
                     path: '/exit',
                     component: exit,
-                    meta: ['exit']
+                    meta: ['导航二', 'exit']
                 },
                 {
                     path: '/set',
                     component: set,
-                    meta: ['set']
+                    meta: ['导航三', 'set']
                 }
             ]
         }

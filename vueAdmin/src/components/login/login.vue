@@ -235,7 +235,12 @@
               })
             }
           } else {
-            console.log('error submit!!');
+            // console.log('error submit!!');
+            this.$notify.error({
+              title: "错误",
+              message: "请输入正确的用户名密码",
+              offset: 100
+            })
             return false;
           }
         });

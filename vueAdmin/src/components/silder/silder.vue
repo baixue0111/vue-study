@@ -11,20 +11,21 @@
                     background-color="#545c64"
                     text-color="#fff"
                     active-text-color="#ffd04b"
+                    unique-opened
                     router>
-                    <el-menu-item index="silder">
+                    <!-- <el-menu-item index="silder">
                         <template slot="title">
                             <i class="el-icon-menu"></i>
                             <span>首页</span>
                         </template>
-                    </el-menu-item>
+                    </el-menu-item> -->
                     <el-submenu index="2">
                         <template slot="title">
                             <i class="el-icon-document"></i>   
                             <span>导航一</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="table">Table</el-menu-item>
+                            <el-menu-item index="silder">Table</el-menu-item>
                             <el-menu-item index="form">Form</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
