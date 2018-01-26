@@ -17,9 +17,18 @@
                     </el-form-item>
                 </el-form>
             </el-col>
-            <el-main>
-                <h3>我是table.vue</h3>
-            </el-main>
+            <el-table border style="width: 100%">
+                <el-table-column type="selection" width="55"></el-table-column>
+                <el-table-column type="index" width="60"></el-table-column>
+                <el-table-column prop="" label="姓名" width="120" sortable></el-table-column>
+                <el-table-column prop="" label="性别" width="100" sortable></el-table-column>
+                <el-table-column prop="" label="年龄" width="100" sortable></el-table-column>
+                <el-table-column prop="" label="生日" width="120" sortable></el-table-column>
+                <el-table-column prop="" label="地址" min-width="180" sortable></el-table-column>
+                <el-table-column prop="" label="操作" min-width="150">
+
+                </el-table-column>
+            </el-table>
         </section>
     </div>
 </template>
