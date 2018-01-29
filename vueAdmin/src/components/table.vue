@@ -13,11 +13,11 @@
                         <el-button type="primary">查询</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary">取消</el-button>
+                        <el-button type="primary">新增</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
-            <el-table border style="width: 100%">
+            <el-table border style="width: 100%" highlight-current-row>
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column type="index" width="60"></el-table-column>
                 <el-table-column prop="" label="姓名" width="120" sortable></el-table-column>
@@ -40,8 +40,23 @@ export default {
     data() {
         return {
             formInline: {
-                username: ''
+                username: '',
+                tableData: []
             }
+        }
+    },
+    created() {
+        getTableData()
+    },
+    methods: {
+        getTableData() {
+            axios.post('https://www.easy-mock.com/mock/5a6e8a2e376cc81223703ef3/admin/user', {
+
+            }).then(function(response) {
+                console.log(response)
+            }).catch(function(error) {
+                console.log(error)
+            })
         }
     },
     components: {
