@@ -89,6 +89,7 @@ export default {
             let _id = this.selectList.map((item, index) => {   // 遍历勾选中的数据
                 return item.id
             }).toString();
+            // console.log(_id)
             this.$confirm("确认删除选中记录吗？", "提示", {
                 confirmButtonText: "确定",
                 cancelButtonText: "取消",
@@ -98,13 +99,27 @@ export default {
                 // 点击确定时就改变isDel的状态
                 // console.log(_id);
                 let json_id = _id.split(",");   // 把字符串分割成字符串数组
-                json_id.map(item => {
-                    // console.log(item);
-                    if( item == this.tableData.id ) { // 有问题？？？？/
-                        console.log(this.tableData)
-                        this.tableData.isDel = true;
+
+                // json_id.map(item => {
+                //     // console.log(item);
+                //     if( item == this.tableData.id ) { // 有问题？？？？/
+                //         console.log(this.tableData)
+                //         this.tableData.isDel = true;
+                //     }
+                // })
+                for( var i = 0; i < this.tableData.length; i++ ){
+                    console.info(this.tableData.length)
+                    for ( var j = 0; j < json_id.length; j++ ) {
+                        console.log(this.tableData[i].id)
+                        if(this.tableData[i].id == json_id[j]){
+                            //改变 isDel
+                            this.tableData[i].isDel = true;
+                        }
                     }
-                })
+                    // newDat.push(this.tableData[i]);
+
+                }
+                  this.listLoading = false;
                 // console.log(json_Id);
                 // if(_id == this.tableData.id) {
                 //     this.tableData.isDel = true;
