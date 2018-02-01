@@ -11,10 +11,10 @@
                         <el-input v-model="formInline.username" placeholder="姓名"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary">查询</el-button>
+                        <el-button type="primary" @click="checkUser">查询</el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary">新增</el-button>
+                        <el-button type="primary" @click="showAdd">新增</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
@@ -23,24 +23,37 @@
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column type="index" width="60"></el-table-column>
                 <el-table-column prop="name" label="姓名" width="120" sortable></el-table-column>
-                <el-table-column prop="sex" label="性别" width="100" sortable></el-table-column>
+                <el-table-column prop="sex" label="性别" width="100" :formatter="formatterSex" sortable></el-table-column>    <!-- formatter 格式化内容 -->
                 <el-table-column prop="age" label="年龄" width="100" sortable></el-table-column>
                 <el-table-column prop="birth" label="生日" width="120" sortable></el-table-column>
                 <el-table-column prop="address" label="地址" min-width="170" sortable></el-table-column>
                 <el-table-column label="操作" min-width="150">
                     <template slot-scope="scope">
                         <el-button size="small">编辑</el-button>
-                        <el-button size="small" type="danger">编辑</el-button>
+                        <!-- scope 会将当前点击删除的整行数据作为参数传入 -->
+                        <el-button size="small" type="danger" @click="delEvent(scope)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <!-- 分页 -->
             <el-col :span="24" class="tool">
-                <!-- <div> -->
-                    <el-button type="danger" :disabled="this.selectList.length === 0" @click="batchRemove">批量删除</el-button>
-                <!-- </div> -->
-                <el-pagination background layout="prev, pager, next" :total="1000" style="float: right; margin-top: 5px;"></el-pagination>
+                <el-button type="danger" :disabled="this.selectList.length === 0" @click="batchRemove">批量删除</el-button>
+                <el-pagination background layout="prev, pager, next" :total="tableData.length" :page-size="10" style="float: right; margin-top: 5px;"></el-pagination>
             </el-col>
+            <!-- 新增 -->
+            <el-dialog title="新增" v-model="addData" :visible.sync="showDialog" :close-on-click-modal="false" class="addDialog">
+                <el-form>
+                    <el-form-item label="姓名" prop="">
+                        <el-input :model="addData.name" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="性别">
+                        <el-radio-group v-model="addData.sex">
+                            <el-radio :label="1">男</el-radio>
+                            <el-radio :label="0">女</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                </el-form>
+            </el-dialog>
         </section>
     </div>
 </template>
@@ -51,18 +64,48 @@ export default {
     name: 'table',
     data() {
         return {
-            formInline: {
+            formInline: {   // 查询时获取用户输入的姓名
                 username: ''
             },
-            tableData: [],
+            tableData: [],  // 原始数据列表
+            selectList: [],   // 选中列表
             listLoading: false,   // loading 显示状态
-            selectList: []   // 选中列表
+            showDialog: true,   // 控制显示“新增”弹框
+
+            // 新增页面数据
+            addData: {
+                name: "",
+                sex: -1,
+                age: 0,
+                birth: "",
+                address: ""
+            },
+            ruleName: {
+                name: [
+                    { require: true, message: "请输入姓名", trigger: "blur"}
+                ]
+            }
         }
     },
     created() {
         this.getTableData()
     },
     methods: {
+        // 性别显示转换
+        formatterSex(row) {
+            // row 表示每行的数据
+            return row.sex == 1 ? "男" : "女";
+        },
+        // 查询（根据用户输入的姓名查找）
+        checkUser() {
+            let iptName = this.formInline.username;
+            let _this = this;
+            _this.tableData.forEach((item, index) => {
+                if(item.name != iptName) {
+                    item.isDel = true;
+                }
+            })
+        },
         // 获取用户数据
         getTableData() {  
             this.listLoading = true;
@@ -89,42 +132,60 @@ export default {
             let _id = this.selectList.map((item, index) => {   // 遍历勾选中的数据
                 return item.id
             }).toString();
-            // console.log(_id)
             this.$confirm("确认删除选中记录吗？", "提示", {
                 confirmButtonText: "确定",
                 cancelButtonText: "取消",
                 type: "warning"
             }).then(() => {
                 this.listLoading = true;
-                // 点击确定时就改变isDel的状态
-                // console.log(_id);
+                let _this = this;  // 保存下this，在forEach中的匿名函数中this指向会发生变化，所以提前保存一下，否则会获取不到tableData的值
                 let json_id = _id.split(",");   // 把字符串分割成字符串数组
 
-                // json_id.map(item => {
-                //     // console.log(item);
-                //     if( item == this.tableData.id ) { // 有问题？？？？/
-                //         console.log(this.tableData)
-                //         this.tableData.isDel = true;
-                //     }
-                // })
-                for( var i = 0; i < this.tableData.length; i++ ){
-                    console.info(this.tableData.length)
-                    for ( var j = 0; j < json_id.length; j++ ) {
-                        console.log(this.tableData[i].id)
-                        if(this.tableData[i].id == json_id[j]){
-                            //改变 isDel
-                            this.tableData[i].isDel = true;
-                        }
-                    }
-                    // newDat.push(this.tableData[i]);
+                _this.tableData.forEach(function(item, index) {
 
-                }
-                  this.listLoading = false;
-                // console.log(json_Id);
-                // if(_id == this.tableData.id) {
-                //     this.tableData.isDel = true;
-                // }
+                    json_id.forEach(function(item_id, index_id) {
+
+                        if(item.id == item_id) {
+                            item.isDel = true;
+                        }
+
+                    })
+                })
+                this.listLoading = false;
             })
+        },
+        // 删除每条记录事件
+        delEvent(val) {
+            // console.log(val)
+            this.$confirm("确认删除该条记录吗？", "提示", {
+                confirmButtonText: "确定",
+                cancelButtonText: "取消"
+            }).then(() => {
+                this.listLoading = true;
+                let del_id = val.row.id;
+                let _this = this;
+                _this.tableData.forEach((item, index) => {
+                    if(item.id == del_id) {
+                        item.isDel = true;
+                    }
+                })
+                this.$message({
+                    type: "success",
+                    message: "删除成功！"
+                })
+                this.listLoading = false;
+            });
+        },
+        // 显示新增页面
+        showAdd() {
+            this.showDialog = true;
+            this.addData = {
+                name: "",
+                sex: -1,
+                age: 0,
+                birth: "",
+                address: ""
+            }
         }
     },
     computed: {
@@ -180,6 +241,11 @@ export default {
                 td{
                     padding: 6px 0;
                 }
+            }
+        }
+        .addDialog{
+            .el-form-item__content{
+                margin-left: 40px;
             }
         }
     }
