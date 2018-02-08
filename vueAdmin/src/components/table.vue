@@ -41,9 +41,9 @@
                 <el-pagination background layout="prev, pager, next" :total="tableData.length" :page-size="10" style="float: right; margin-top: 5px;"></el-pagination>
             </el-col>
             <!-- 新增 -->
-            <el-dialog title="新增" v-model="addData" :visible.sync="showDialog" :close-on-click-modal="false" class="addDialog">
-                <el-form>
-                    <el-form-item label="姓名" prop="">
+            <el-dialog title="新增" v-model="showDialog" :visible.sync="showDialog" :close-on-click-modal="false" class="addDialog">
+                <el-form :model="addData" :rules="ruleName" ref="addForm">
+                    <el-form-item label="姓名" prop="name">
                         <el-input :model="addData.name" auto-complete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="性别">
@@ -52,7 +52,20 @@
                             <el-radio :label="0">女</el-radio>
                         </el-radio-group>
                     </el-form-item>
+                    <el-form-item label="年龄">
+                        <el-input-number v-model="addData.age" :min="0" :max="200" controls-position="right"></el-input-number>
+                    </el-form-item>
+                    <el-form-item label="生日">
+                        <el-date-picker v-model="addData.birth" type="date" placeholder="选择日期"></el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="地址">
+                        <el-input type="textarea" v-model="addData.address"></el-input>
+                    </el-form-item>
                 </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="cancelDialog = false">取消</el-button>
+                    <el-button type="primary" @click="subDialog" :loading="addLoading">提交</el-button>
+                </div>
             </el-dialog>
         </section>
     </div>
@@ -60,6 +73,7 @@
 
 <script>
 import header from './header/header';
+import {formatDate} from '../common/date.js';
 export default {
     name: 'table',
     data() {
@@ -70,7 +84,8 @@ export default {
             tableData: [],  // 原始数据列表
             selectList: [],   // 选中列表
             listLoading: false,   // loading 显示状态
-            showDialog: true,   // 控制显示“新增”弹框
+            showDialog: false,   // 是否显示“新增”页面
+            addLoading: false,  // 新增页面点击“提交”loading 
 
             // 新增页面数据
             addData: {
@@ -186,6 +201,26 @@ export default {
                 birth: "",
                 address: ""
             }
+        },
+        // 新增 -- 取消
+        cancelDialog() {
+            // console.log(this.addData)
+        },
+        // 新增 -- 提交
+        subDialog() {
+            // console.log(111)
+            this.$refs.addForm.validate((val) => {
+                if(val) {
+                    // console.log(val)
+                    this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                        this.addLoading = true;
+                        let newDate = this.addData.birth;
+                        newDate = (newDate == "" || !newDate) ? '' : formatDate(newDate, 'yyyy-MM-dd')
+                        // console.log(newDate)
+                        console.log(this.addData.birth)
+                    })
+                }
+            })
         }
     },
     computed: {
