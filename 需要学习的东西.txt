@@ -225,7 +225,7 @@ http://www.ruanyifeng.com/blog/2015/03/react.html -----> react.js 阮一峰React
 
 js框架： extjs\semantic\seajs\weex
 
-
+https://www.easy-mock.com/login  -----> easy mock模拟接口  账号： baixue  密码： xiaobai0111
 
 
 
