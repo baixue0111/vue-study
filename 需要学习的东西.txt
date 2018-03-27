@@ -227,9 +227,9 @@ js框架： extjs\semantic\seajs\weex
 
 https://www.easy-mock.com/login  -----> easy mock模拟接口  账号： baixue  密码： xiaobai0111
 
+https://segmentfault.com/a/1190000009657295  -----> 基于vue+elementUI后台管理系统
 
-
-
+https://github.com/taylorchen709/vue-admin  -----> 基于vue+elementUI后台管理系统 （https://www.cnblogs.com/taylorchen/p/6083099.html）
 
 
 

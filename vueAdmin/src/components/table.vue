@@ -215,9 +215,10 @@ export default {
                     this.$confirm('确认提交吗？', '提示', {}).then(() => {
                         this.addLoading = true;
                         let newDate = this.addData.birth;
-                        newDate = (newDate == "" || !newDate) ? '' : formatDate(newDate, 'yyyy-MM-dd')
+                        newDate = (newDate == "" || !newDate) ? '' : formatDate(newDate, 'yyyy-MM-dd');
                         // console.log(newDate)
                         console.log(this.addData.birth)
+                        // console.log(this.addData)
                     })
                 }
             })
