@@ -231,6 +231,22 @@ https://segmentfault.com/a/1190000009657295  -----> 基于vue+elementUI后台管
 
 https://github.com/taylorchen709/vue-admin  -----> 基于vue+elementUI后台管理系统 （https://www.cnblogs.com/taylorchen/p/6083099.html）
 
+https://segmentfault.com/a/1190000009275424#articleHeader10   ----------> 手摸手，带你用vue撸代码
+
+https://segmentfault.com/a/1190000012315822     ----->  vue 相关面试题
+
+http://cn.bing.com/  ------>  必应搜索引擎
+
+http://jspang.com/   -----> 技术胖博客
+
+https://www.chungold.com/  -----> 纯金学习网站
+
+https://www.w3cplus.com/vue/how-to-create-filters-in-vuejs.html  -----> vue学习笔记
+
+https://www.toptal.com/developers/css/sprite-generator -----> 雪碧图在线生成
+
+https://doc.webpack-china.org/concepts/  -----> webpack网站
+
 
 
 
